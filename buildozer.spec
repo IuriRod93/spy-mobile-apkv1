@@ -1,10 +1,10 @@
 [app]
-title = Spy Mobile
-package.name = spymobile
+title = Spy Monitor
+package.name = spymonitor
 package.domain = org.spy
-source.dir = .
+source.dir = spymonitor
 version = 1.0
-requirements = python3,kivy==2.1.0,requests
+requirements = python3,kivy==2.1.0,kivymd,plyer,requests
 orientation = portrait
 android.api = 30
 android.minapi = 21
@@ -23,4 +23,5 @@ INTERNET = 1
 ACCESS_NETWORK_STATE = 1
 ACCESS_FINE_LOCATION = 1
 READ_EXTERNAL_STORAGE = 1
+WRITE_EXTERNAL_STORAGE = 1
 CAMERA = 1

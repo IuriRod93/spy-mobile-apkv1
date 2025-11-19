@@ -1,6 +1,8 @@
 import toga
 from toga.style import Pack
 from toga.style.pack import COLUMN, ROW
+import traceback
+import sys
 import time
 import threading
 import requests
@@ -25,6 +27,10 @@ BATCH_SIZE = 3  # lotes menores para evitar sobrecarga
 class SpyMonitor(toga.App):
     def __init__(self, formal_name="Spy Monitor", app_id="org.beeware.spymonitor"):
         super().__init__(formal_name=formal_name, app_id=app_id)
+
+    def main_module(self):
+        """Retorna o módulo principal para briefcase"""
+        return "spymonitor.app_toga"
     def startup(self):
         """Inicializar a aplicação de monitoramento"""
         # Variáveis de controle

