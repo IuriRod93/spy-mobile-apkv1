@@ -1,0 +1,1158 @@
+Date/Time:       2025-11-22 12:54:04 
+Command line:    C:\Users\Iuri\AppData\Roaming\Python\Python313\site-packages\briefcase\__main__.py run android
+
+OS Release:      Windows 11
+OS Version:      10.0.26100
+Architecture:    AMD64
+Platform:        Windows-11-10.0.26100-SP0
+
+Python exe:      C:\Python313\python.exe
+Python version:  3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
+Virtual env:     False
+Conda env:       False
+
+Briefcase:       0.3.25
+Target platform: android
+Target format:   gradle
+
+Environment Variables:
+	ALLUSERSPROFILE=C:\ProgramData
+	APPDATA=C:\Users\Iuri\AppData\Roaming
+	BLACKBOX_ACTIVE=true
+	CHOCOLATEYINSTALL=C:\ProgramData\chocolatey
+	CHOCOLATEYLASTPATHUPDATE=133887497030477345
+	CHROME_CRASHPAD_PIPE_NAME=\\.\pipe\crashpad_6004_GZPBAMUICHTLBLRT
+	COLORTERM=truecolor
+	COMMONPROGRAMFILES=C:\Program Files\Common Files
+	COMMONPROGRAMFILES(X86)=C:\Program Files (x86)\Common Files
+	COMMONPROGRAMW6432=C:\Program Files\Common Files
+	COMPUTERNAME=DESKTOP-13L7BV8
+	COMSPEC=C:\WINDOWS\system32\cmd.exe
+	DRIVERDATA=C:\Windows\System32\Drivers\DriverData
+	EFC_29148_1262719628=1
+	EFC_29148_1592913036=1
+	EFC_29148_2283032206=1
+	EFC_29148_2775293581=1
+	EFC_29148_3789132940=1
+	FPS_BROWSER_APP_PROFILE_STRING=Internet Explorer
+	FPS_BROWSER_USER_PROFILE_STRING=Default
+	GIT_ASKPASS=********************
+	HOMEDRIVE=C:
+	HOMEPATH=\Users\Iuri
+	JAVA_HOME=C:\Program Files\Java\jdk-25
+	LANG=en_US.UTF-8
+	LOCALAPPDATA=C:\Users\Iuri\AppData\Local
+	LOGONSERVER=\\DESKTOP-13L7BV8
+	NUMBER_OF_PROCESSORS=4
+	ONEDRIVE=C:\Users\Iuri\OneDrive
+	OPENAI_API_KEY=********************
+	ORIGINAL_XDG_CURRENT_DESKTOP=undefined
+	OS=Windows_NT
+	PATH=C:\Program Files\PowerShell\7;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Python313\Scripts\;C:\Python313\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\dotnet\;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\PowerShell\7\;C:\Users\Iuri\miniconda3\minconda.3;C:\Users\Iuri\miniconda3\minconda.3\Library\mingw-w64\bin;C:\Users\Iuri\miniconda3\minconda.3\Library\usr\bin;C:\Users\Iuri\miniconda3\minconda.3\Library\bin;C:\Users\Iuri\miniconda3\minconda.3\Scripts;C:\Users\Iuri\AppData\Local\Programs\Python\Python312\Scripts\;C:\Users\Iuri\AppData\Local\Programs\Python\Python312\;C:\Users\Iuri\AppData\Local\Microsoft\WindowsApps;C:\Users\Iuri\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Iuri\AppData\Roaming\npm;C:\Program Files\heroku\bin;C:\Users\Iuri\AppData\Local\Google\Cloud SDK\google-cloud-sdk\bin;C:\Users\Iuri\AppData\Local\Programs\Ollama;C:\Users\Iuri\AppData\Local\Programs\Fiddler;C:\Users\Iuri\.dotnet\tools;C:\Program Files\mitmproxy\bin;C:\Program Files\Java\jdk-25\bin;
+	PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW;.CPL
+	POWERSHELL_DISTRIBUTION_CHANNEL=MSI:Windows 10 Enterprise LTSC 2024
+	PROCESSOR_ARCHITECTURE=AMD64
+	PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 142 Stepping 9, GenuineIntel
+	PROCESSOR_LEVEL=6
+	PROCESSOR_REVISION=8e09
+	PROGRAMDATA=C:\ProgramData
+	PROGRAMFILES=C:\Program Files
+	PROGRAMFILES(X86)=C:\Program Files (x86)
+	PROGRAMW6432=C:\Program Files
+	PSMODULEPATH=C:\Users\Iuri\Documents\PowerShell\Modules;C:\Program Files\PowerShell\Modules;c:\program files\powershell\7\Modules;C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+	PUBLIC=C:\Users\Public
+	SESSIONNAME=Console
+	SYSTEMDRIVE=C:
+	SYSTEMROOT=C:\WINDOWS
+	TEMP=C:\Users\Iuri\AppData\Local\Temp
+	TERM_PROGRAM=vscode
+	TERM_PROGRAM_VERSION=1.99.6
+	TMP=C:\Users\Iuri\AppData\Local\Temp
+	USERDOMAIN=DESKTOP-13L7BV8
+	USERDOMAIN_ROAMINGPROFILE=DESKTOP-13L7BV8
+	USERNAME=Iuri
+	USERPROFILE=C:\Users\Iuri
+	VBOX_MSI_INSTALL_PATH=C:\Program Files\Oracle\VirtualBox\
+	VSCODE_GIT_ASKPASS_EXTRA_ARGS=********************
+	VSCODE_GIT_ASKPASS_MAIN=********************
+	VSCODE_GIT_ASKPASS_NODE=********************
+	VSCODE_GIT_IPC_HANDLE=\\.\pipe\vscode-git-190f844da1-sock
+	VSCODE_INJECTION=1
+	WINDIR=C:\WINDOWS
+	ZES_ENABLE_SYSMAN=1
+
+pyproject.toml:
+[build-system]
+requires = ["briefcase"]
+
+[tool.briefcase]
+project_name = "SpyMonitor"
+bundle = "org.beeware.spymonitor.v2"
+version = "2.0.1"
+url = "https://147.79.111.118/"
+license = "LICENSE"
+author = "Iuri Rodrigues"
+author_email = "irodti93@gmail.com"
+
+[tool.briefcase.app.spymonitor]
+formal_name = "Spy Monitor Pro"
+description = "Aplicativo avançado de monitoramento e coleta de dados de dispositivos"
+icon = "logo"
+sources = ["spymonitor"]
+requires = []
+url_scheme = "spymonitor"
+
+[tool.briefcase.app.spymonitor.macOS]
+requires = []
+
+[tool.briefcase.app.spymonitor.linux]
+requires = []
+
+[tool.briefcase.app.spymonitor.windows]
+requires = []
+
+[tool.briefcase.app.spymonitor.iOS]
+requires = []
+
+[tool.briefcase.app.spymonitor.android]
+requires = [
+    "toga-android>=0.4.0",
+    "rubicon-java>=0.2.0",
+    "plyer>=2.1.0",
+    "requests>=2.28.0",
+]
+build_gradle_dependencies = [
+    "androidx.core:core-ktx:1.12.0",
+    "androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0",
+    "androidx.activity:activity-ktx:1.8.2",
+    "androidx.appcompat:appcompat:1.6.1",
+    "com.google.android.material:material:1.11.0",
+    "androidx.work:work-runtime:2.8.1",
+]
+exclude_packages = [
+    "toga-gtk",
+    "pycairo",
+    "pygobject",
+    "toga-winforms",
+    "toga-cocoa",
+    "toga-iOS",
+]
+# Permissões essenciais para monitoramento
+permission_internet = true
+permission_access_network_state = true
+permission_wake_lock = true
+permission_access_fine_location = true
+permission_access_coarse_location = true
+permission_read_external_storage = true
+permission_write_external_storage = true
+permission_camera = true
+permission_record_audio = true
+permission_read_contacts = true
+permission_read_sms = true
+permission_read_call_log = true
+permission_read_phone_state = true
+
+Briefcase Log:
+[12:35:21]                                                                                                                                                             config.py:666
+           *************************************************************************                                                                                   config.py:666
+           ** WARNING: License Definition for the Project is Deprecated           **                                                                                   config.py:666
+           *************************************************************************                                                                                   config.py:666
+                                                                                                                                                                       config.py:666
+               Briefcase now uses PEP 621 format for license definitions.                                                                                              config.py:666
+                                                                                                                                                                       config.py:666
+               Previously, the name of the license was assigned to the 'license'                                                                                       config.py:666
+               field in pyproject.toml. For PEP 621, the name of the license is                                                                                        config.py:666
+               assigned to 'license.text' or the name of the file containing the                                                                                       config.py:666
+               license is assigned to 'license.file'.                                                                                                                  config.py:666
+                                                                                                                                                                       config.py:666
+               The current configuration for the Project has a 'license' field                                                                                         config.py:666
+               that is specified as a string:                                                                                                                          config.py:666
+                                                                                                                                                                       config.py:666
+                   license = "LICENSE"                                                                                                                                 config.py:666
+                                                                                                                                                                       config.py:666
+               To use the PEP 621 format (and to remove this warning), specify that                                                                                    config.py:666
+               the LICENSE file contains the license for the Project:                                                                                                  config.py:666
+                                                                                                                                                                       config.py:666
+                   license.file = "LICENSE"                                                                                                                            config.py:666
+                                                                                                                                                                       config.py:666
+           *************************************************************************                                                                                   config.py:666
+                                                                                                                                                                         java.py:111
+           [Java JDK] Evaluating JAVA_HOME...                                                                                                                            java.py:111
+           JAVA_HOME=C:\Program Files\Java\jdk-25                                                                                                                        java.py:112
+                                                                                                                                                                   subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Program Files\Java\jdk-25\bin\javac' -version                                                                                               subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:35:22] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     javac 25                                                                                                                                        subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+                                                                                                                                                                         java.py:232
+           *************************************************************************                                                                                     java.py:232
+           ** WARNING: JAVA_HOME does not point to a Java 17 JDK                  **                                                                                     java.py:232
+           *************************************************************************                                                                                     java.py:232
+                                                                                                                                                                         java.py:232
+               Android requires a Java 17 JDK, but the location pointed to by the                                                                                        java.py:232
+               JAVA_HOME environment variable:                                                                                                                           java.py:232
+                                                                                                                                                                         java.py:232
+               C:\Program Files\Java\jdk-25                                                                                                                              java.py:232
+                                                                                                                                                                         java.py:232
+               isn't a Java 17 JDK (it appears to be Java 25).                                                                                                           java.py:232
+                                                                                                                                                                         java.py:232
+               Briefcase will proceed using its own JDK instance.                                                                                                        java.py:232
+                                                                                                                                                                         java.py:232
+           *************************************************************************                                                                                     java.py:232
+           Using JDK at C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\java17                                                                                 java.py:259
+           Using Android SDK at C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk                                                             android_sdk.py:375
+           Android emulator is already installed.                                                                                                                 android_sdk.py:650
+                                                                                                                                                                   subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:35:25] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     * daemon not running; starting now at tcp:5037                                                                                                  subprocess.py:838
+           >>>     * daemon started successfully                                                                                                                   subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\emulator\emulator.exe' -list-avds                                        subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:35:26] >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+                                                                                                                                                                      console.py:702
+                                                                                                                                                                      console.py:703
+           -- Android device ------------------------------------------------------------                                                                             console.py:704
+                                                                                                                                                                      console.py:940
+           Select Android device to use:                                                                                                                              console.py:941
+                                                                                                                                                                      console.py:942
+             1) Create a new Android emulator                                                                                                                         console.py:956
+                                                                                                                                                                      console.py:958
+[12:45:35] Android device:                                                                                                                                            console.py:961
+           User input: Samsung Note 10 plus                                                                                                                           console.py:961
+                                                                                                                                                                      console.py:790
+           Invalid Selection                                                                                                                                          console.py:791
+                                                                                                                                                                      console.py:792
+[12:45:46] Android device:                                                                                                                                            console.py:961
+           User input: 1                                                                                                                                              console.py:961
+                                                                                                                                                                   subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\emulator\emulator.exe' -list-avds                                        subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:45:47] >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+                                                                                                                                                                      console.py:702
+                                                                                                                                                                      console.py:703
+           -- Emulator Name -------------------------------------------------------------                                                                             console.py:704
+                                                                                                                                                                      console.py:886
+           You need to select a name for your new emulator. This is an identifier that                                                                                console.py:887
+           can be used to start the emulator in future. It should follow the same naming                                                                                            
+           conventions as a Python package (i.e., it may only contain letters, numbers,                                                                                             
+           hyphens and underscores). If you don't provide a name, Briefcase will use the                                                                                            
+           a default name 'beePhone'.                                                                                                                                               
+                                                                                                                                                                      console.py:888
+[12:45:58] Emulator Name [beePhone]:                                                                                                                             android_sdk.py:1110
+           User input: Samsung Note 10 plus                                                                                                                      android_sdk.py:1110
+                                                                                                                                                                      console.py:846
+           Invalid value: An emulator name may only contain letters, numbers, hyphens and underscores.                                                                console.py:847
+                                                                                                                                                                      console.py:895
+[12:46:02] Emulator Name [beePhone]:                                                                                                                             android_sdk.py:1110
+           User input: Samsung                                                                                                                                   android_sdk.py:1110
+                                                                                                                                                                  android_sdk.py:807
+           [android_sdk] Obtaining pixel_7_pro device skin...                                                                                                     android_sdk.py:807
+[12:46:05] Downloading mirror-goog-studio-main-artwork-resources-device-art-resources-pixel_7_pro.tar.gz...                                                              file.py:227
+[12:46:06] Installing device skin... started                                                                                                                      android_sdk.py:822
+           Installing device skin... done                                                                                                                         android_sdk.py:822
+                                                                                                                                                                  android_sdk.py:776
+           [android_sdk] Downloading the 'system-images;android-31;default;x86_64' Android system image...                                                        android_sdk.py:776
+                                                                                                                                                                   subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\cmdline-tools\19.0\bin\sdkmanager.bat'                                   subprocess.py:838
+           'system-images;android-31;default;x86_64'                                                                                                                                
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Environment Overrides:                                                                                                                              subprocess.py:838
+           >>>     ANDROID_HOME=C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk                                                              subprocess.py:838
+           >>>     ANDROID_SDK_ROOT=C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk                                                          subprocess.py:838
+           >>>     JAVA_HOME=C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\java17                                                                      subprocess.py:838
+[12:49:37] >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           Creating Android emulator Samsung... started                                                                                                          android_sdk.py:1180
+                                                                                                                                                                   subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\cmdline-tools\19.0\bin\avdmanager.bat' --verbose create avd --name       subprocess.py:838
+           Samsung --abi x86_64 --package 'system-images;android-31;default;x86_64' --device pixel                                                                                  
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Environment Overrides:                                                                                                                              subprocess.py:838
+           >>>     ANDROID_HOME=C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk                                                              subprocess.py:838
+           >>>     ANDROID_SDK_ROOT=C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk                                                          subprocess.py:838
+           >>>     JAVA_HOME=C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\java17                                                                      subprocess.py:838
+           >>>     XDG_CONFIG_HOME=None                                                                                                                            subprocess.py:838
+[12:49:50] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     Loading local repository...                                                                                                                     subprocess.py:838
+           >>>     [=========                              ] 25% Loading local repository...                                                                       subprocess.py:838
+           >>>     [=========                              ] 25% Fetch remote repository...                                                                        subprocess.py:838
+           >>>     [=======================================] 100% Fetch remote repository...                                                                       subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           Creating Android emulator Samsung... done                                                                                                             android_sdk.py:1180
+           Adding extra device configuration... started                                                                                                          android_sdk.py:1208
+           Adding extra device configuration... done                                                                                                             android_sdk.py:1208
+                                                                                                                                                                 android_sdk.py:1137
+           Android emulator 'Samsung' created.                                                                                                                   android_sdk.py:1137
+                                                                                                                                                                 android_sdk.py:1137
+           In future, you can specify this device by running:                                                                                                    android_sdk.py:1137
+                                                                                                                                                                 android_sdk.py:1137
+               $ briefcase run android -d @Samsung                                                                                                               android_sdk.py:1137
+                                                                                                                                                                       gradle.py:418
+           [spymonitor] Starting emulator Samsung...                                                                                                                   gradle.py:418
+                                                                                                                                                                   subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\emulator\emulator.exe' -list-avds                                        subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:49:51] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     Samsung                                                                                                                                         subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\emulator\emulator.exe' @Samsung -dns-server 8.8.8.8                      subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Environment Overrides:                                                                                                                              subprocess.py:838
+           >>>     ANDROID_HOME=C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk                                                              subprocess.py:838
+           >>>     ANDROID_SDK_ROOT=C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk                                                          subprocess.py:838
+           >>>     JAVA_HOME=C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\java17                                                                      subprocess.py:838
+           Starting emulator... started                                                                                                                          android_sdk.py:1335
+[12:49:52]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+[12:49:53] >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:49:55]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:49:57]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:49:58] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:50:00]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:50:02]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           ... still waiting                                                                                                                                           gradle.py:419
+[12:50:04]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:50:06]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:50:09]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:50:11]                                                                                                                                                         subprocess.py:838
+[12:50:12] >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           ... still waiting                                                                                                                                           gradle.py:419
+[12:50:14]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:50:16]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:50:17] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:50:19]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:50:21]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:50:23]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+[12:50:24] >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          offline transport_id:1                                                                                                   subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:50:25] ... still waiting                                                                                                                                           gradle.py:419
+[12:50:27]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:50:28] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          offline transport_id:1                                                                                                   subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:50:30]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          offline transport_id:1                                                                                                   subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:50:32]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:50:33] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          offline transport_id:1                                                                                                   subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:50:35]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          offline transport_id:1                                                                                                   subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           ... still waiting                                                                                                                                           gradle.py:419
+[12:50:37]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          offline transport_id:1                                                                                                   subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:50:39]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:50:40] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          offline transport_id:1                                                                                                   subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:50:42]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          offline transport_id:1                                                                                                   subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:50:44]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:50:45] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          offline transport_id:1                                                                                                   subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:50:47]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+[12:50:48] >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          offline transport_id:1                                                                                                   subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           ... still waiting                                                                                                                                           gradle.py:419
+[12:50:50]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          offline transport_id:1                                                                                                   subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:50:52]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          offline transport_id:1                                                                                                   subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:50:54]                                                                                                                                                         subprocess.py:838
+[12:50:55] >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:50:56] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          offline transport_id:1                                                                                                   subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:50:58]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          offline transport_id:1                                                                                                   subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           ... still waiting                                                                                                                                           gradle.py:419
+[12:51:00]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:51:01] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          offline transport_id:1                                                                                                   subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:51:03]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+[12:51:04] >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          offline transport_id:1                                                                                                   subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:51:06]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+[12:51:07] >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:51:08] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          device product:sdk_phone64_x86_64 model:Android_SDK_built_for_x86_64 device:emulator64_x86_64 transport_id:1             subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' -s emulator-5554 emu avd name                    subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:51:09] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     Samsung                                                                                                                                         subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>>     OK                                                                                                                                              subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           Starting emulator... done                                                                                                                             android_sdk.py:1335
+[12:51:10]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' -s emulator-5554 shell getprop                   subprocess.py:838
+           sys.boot_completed                                                                                                                                                       
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           Booting emulator... started                                                                                                                           android_sdk.py:1369
+                                                                                                                                                                   subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' -s emulator-5554 shell getprop                   subprocess.py:838
+           sys.boot_completed                                                                                                                                                       
+[12:51:11] >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:51:13]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' -s emulator-5554 shell getprop                   subprocess.py:838
+           sys.boot_completed                                                                                                                                                       
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+[12:51:14] >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:51:16]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+[12:51:17] >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' -s emulator-5554 shell getprop                   subprocess.py:838
+           sys.boot_completed                                                                                                                                                       
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:51:20] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:51:22]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' -s emulator-5554 shell getprop                   subprocess.py:838
+           sys.boot_completed                                                                                                                                                       
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:51:23] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           ... still waiting                                                                                                                                           gradle.py:419
+[12:51:25]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' -s emulator-5554 shell getprop                   subprocess.py:838
+           sys.boot_completed                                                                                                                                                       
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:51:26] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:51:28]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' -s emulator-5554 shell getprop                   subprocess.py:838
+           sys.boot_completed                                                                                                                                                       
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:51:29] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:51:31]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+[12:51:32] >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' -s emulator-5554 shell getprop                   subprocess.py:838
+           sys.boot_completed                                                                                                                                                       
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:51:33] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+[12:51:34] >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:51:35] ... still waiting                                                                                                                                           gradle.py:419
+[12:51:37]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' -s emulator-5554 shell getprop                   subprocess.py:838
+           sys.boot_completed                                                                                                                                                       
+[12:51:38] >>> Working Directory:                                                                                                                                  subprocess.py:838
+[12:51:39] >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:51:41] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:51:43]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' -s emulator-5554 shell getprop                   subprocess.py:838
+           sys.boot_completed                                                                                                                                                       
+[12:51:44] >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:51:46] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           ... still waiting                                                                                                                                           gradle.py:419
+[12:51:48]                                                                                                                                                         subprocess.py:838
+[12:51:49] >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' -s emulator-5554 shell getprop                   subprocess.py:838
+           sys.boot_completed                                                                                                                                                       
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:51:50] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+[12:51:51]                                                                                                                                                         subprocess.py:838
+[12:51:53]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' -s emulator-5554 shell getprop                   subprocess.py:838
+           sys.boot_completed                                                                                                                                                       
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:51:54] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+[12:51:55] >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:51:57]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' -s emulator-5554 shell getprop                   subprocess.py:838
+           sys.boot_completed                                                                                                                                                       
+[12:51:58] >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+[12:51:59] >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           ... still waiting                                                                                                                                           gradle.py:419
+[12:52:01]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' -s emulator-5554 shell getprop                   subprocess.py:838
+           sys.boot_completed                                                                                                                                                       
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:52:03] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:52:05]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' -s emulator-5554 shell getprop                   subprocess.py:838
+           sys.boot_completed                                                                                                                                                       
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:52:06] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:52:08]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' -s emulator-5554 shell getprop                   subprocess.py:838
+           sys.boot_completed                                                                                                                                                       
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+[12:52:09] >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           ... still waiting                                                                                                                                           gradle.py:419
+[12:52:12]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' -s emulator-5554 shell getprop                   subprocess.py:838
+           sys.boot_completed                                                                                                                                                       
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:52:13] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:52:15]                                                                                                                                                         subprocess.py:838
+[12:52:16] >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' -s emulator-5554 shell getprop                   subprocess.py:838
+           sys.boot_completed                                                                                                                                                       
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:52:18] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:52:21]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' -s emulator-5554 shell getprop                   subprocess.py:838
+           sys.boot_completed                                                                                                                                                       
+[12:52:22] >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:52:23] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           ... still waiting                                                                                                                                           gradle.py:419
+[12:52:25]                                                                                                                                                         subprocess.py:838
+[12:52:26] >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' -s emulator-5554 shell getprop                   subprocess.py:838
+           sys.boot_completed                                                                                                                                                       
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:52:27] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:52:29]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' -s emulator-5554 shell getprop                   subprocess.py:838
+           sys.boot_completed                                                                                                                                                       
+[12:52:30] >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:52:31] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:52:33]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' -s emulator-5554 shell getprop                   subprocess.py:838
+           sys.boot_completed                                                                                                                                                       
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:52:34] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:52:35] ... still waiting                                                                                                                                           gradle.py:419
+[12:52:37]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+[12:52:38] >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' -s emulator-5554 shell getprop                   subprocess.py:838
+           sys.boot_completed                                                                                                                                                       
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+[12:52:39] >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:52:42] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+[12:52:43]                                                                                                                                                         subprocess.py:838
+[12:52:45]                                                                                                                                                         subprocess.py:838
+[12:52:46] >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' -s emulator-5554 shell getprop                   subprocess.py:838
+           sys.boot_completed                                                                                                                                                       
+[12:52:47] >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+[12:52:48] >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           ... still waiting                                                                                                                                           gradle.py:419
+[12:52:50]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' -s emulator-5554 shell getprop                   subprocess.py:838
+           sys.boot_completed                                                                                                                                                       
+[12:52:51] >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:52:54] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:52:56]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' -s emulator-5554 shell getprop                   subprocess.py:838
+           sys.boot_completed                                                                                                                                                       
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+[12:52:57] >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:53:02] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     1                                                                                                                                               subprocess.py:838
+[12:53:04] >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[12:53:09] Booting emulator... done                                                                                                                              android_sdk.py:1369
+[12:53:13]                                                                                                                                                             gradle.py:426
+[12:53:14] [spymonitor] Starting app on @Samsung (running emulator) (device ID emulator-5554)                                                                          gradle.py:426
+                                                                                                                                                                       gradle.py:438
+           [spymonitor] Installing app...                                                                                                                              gradle.py:438
+           Stopping old versions of the app... started                                                                                                                 gradle.py:439
+                                                                                                                                                                   subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+[12:53:15] >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' -s emulator-5554 shell am force-stop             subprocess.py:838
+           org.beeware.spymonitor.v2.spymonitor                                                                                                                                     
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:53:16] >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           Stopping old versions of the app... done                                                                                                                    gradle.py:439
+           Installing new app version... started                                                                                                                       gradle.py:443
+                                                                                                                                                                   subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+[12:53:17] >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' -s emulator-5554 install -r                      subprocess.py:838
+           'C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile\build\spymonitor\android\gradle\app\build\outputs\apk\debug\app-debug.apk'                                      
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:53:24] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     Performing Streamed Install                                                                                                                     subprocess.py:838
+           >>>     Success                                                                                                                                         subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           Installing new app version... done                                                                                                                          gradle.py:443
+           Launching app... started                                                                                                                                    gradle.py:452
+[12:53:25]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+[12:53:26] >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' -s emulator-5554 shell date '+'"'"'%Y-%m-%d      subprocess.py:838
+           %H:%M:%S'"'"''                                                                                                                                                           
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:53:29] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     2025-11-22 15:52:42                                                                                                                             subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' -s emulator-5554 shell am start -n               subprocess.py:838
+           org.beeware.spymonitor.v2.spymonitor/org.beeware.android.MainActivity -a android.intent.action.MAIN -c android.intent.category.LAUNCHER --es                             
+           org.beeware.ARGV ''"'"'[]'"'"''                                                                                                                                          
+[12:53:30] >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[12:53:31] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER]                                                        subprocess.py:838
+           cmp=org.beeware.spymonitor.v2.spymonitor/org.beeware.android.MainActivity (has extras) }                                                                                 
+           >>>     Error type 3                                                                                                                                    subprocess.py:838
+           >>>     Error: Activity class {org.beeware.spymonitor.v2.spymonitor/org.beeware.android.MainActivity} does not exist.                                   subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           Launching app... errored                                                                                                                                    gradle.py:452
+[12:53:32]                                                                                                                                                            __main__.py:42
+           Activity class not found while starting app.                                                                                                               __main__.py:43
+                                                                                                                                                                      __main__.py:43
+[12:53:33] `adb` output:                                                                                                                                              __main__.py:43
+                                                                                                                                                                      __main__.py:43
+               Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER]                                                               __main__.py:43
+           cmp=org.beeware.spymonitor.v2.spymonitor/org.beeware.android.MainActivity (has extras) }                                                                                 
+           Error type 3                                                                                                                                               __main__.py:43
+           Error: Activity class {org.beeware.spymonitor.v2.spymonitor/org.beeware.android.MainActivity} does not exist.                                              __main__.py:43
+[12:53:34]                                                                                                                                                            __main__.py:43
+           Saving log... started                                                                                                                                      console.py:438
+
+Main thread traceback:
+╭─────────────────────────────────────────────────────────────────────── Traceback (most recent call last) ────────────────────────────────────────────────────────────────────────╮
+│ C:\Users\Iuri\AppData\Roaming\Python\Python313\site-packages\briefcase\__main__.py:27 in main                                                                                    │
+│                                                                                                                                                                                  │
+│   24 │   │   │   Path.cwd() / "pyproject.toml",                                                                                                                                  │
+│   25 │   │   │   overrides=overrides,                                                                                                                                            │
+│   26 │   │   )                                                                                                                                                                   │
+│ ❱ 27 │   │   command(**options)                                                                                                                                                  │
+│   28 │   except HelpText as e:                                                                                                                                                   │
+│   29 │   │   console.info()                                                                                                                                                      │
+│   30 │   │   console.info(str(e))                                                                                                                                                │
+│                                                                                                                                                                                  │
+│ ╭─────────────────────────────────────────────────────────────────────────────────── locals ───────────────────────────────────────────────────────────────────────────────────╮ │
+│ │       command = <briefcase.platforms.android.gradle.GradleRunCommand object at 0x0000025642FF9E80>                                                                           │ │
+│ │       console = <briefcase.console.Console object at 0x000002563FB82E40>                                                                                                     │ │
+│ │             e = BriefcaseCommandError('Activity class not found while starting app.\n\n`adb` output:\n\n    Starting: Intent { act=android.intent.action.MAIN                │ │
+│ │                 cat=[android.intent.category.LAUNCHER] cmp=org.beeware.spymonitor.v2.spymonitor/org.beeware.android.MainActivity (has extras) }\nError type 3\nError:        │ │
+│ │                 Activity class {org.beeware.spymonitor.v2.spymonitor/org.beeware.android.MainActivity} does not exist.\n\n')                                                 │ │
+│ │ extra_cmdline = []                                                                                                                                                           │ │
+│ │       options = {                                                                                                                                                            │ │
+│ │                 │   'appname': None,                                                                                                                                         │ │
+│ │                 │   'update': False,                                                                                                                                         │ │
+│ │                 │   'update_requirements': False,                                                                                                                            │ │
+│ │                 │   'update_support': False,                                                                                                                                 │ │
+│ │                 │   'update_stub': False,                                                                                                                                    │ │
+│ │                 │   'update_resources': False,                                                                                                                               │ │
+│ │                 │   'no_update': False,                                                                                                                                      │ │
+│ │                 │   'test_mode': False,                                                                                                                                      │ │
+│ │                 │   'device_or_avd': None,                                                                                                                                   │ │
+│ │                 │   'extra_emulator_args': None,                                                                                                                             │ │
+│ │                 │   ... +4                                                                                                                                                   │ │
+│ │                 }                                                                                                                                                            │ │
+│ │     overrides = {}                                                                                                                                                           │ │
+│ │        result = 200                                                                                                                                                          │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│                                                                                                                                                                                  │
+│ C:\Users\Iuri\AppData\Roaming\Python\Python313\site-packages\briefcase\commands\run.py:333 in __call__                                                                           │
+│                                                                                                                                                                                  │
+│   330 │   │   │   │   "(apps defining 'external_package_path') cannot be run."                                                                                                   │
+│   331 │   │   │   )                                                                                                                                                              │
+│   332 │   │                                                                                                                                                                      │
+│ ❱ 333 │   │   state = self.run_app(                                                                                                                                              │
+│   334 │   │   │   app,                                                                                                                                                           │
+│   335 │   │   │   passthrough=[] if passthrough is None else passthrough,                                                                                                        │
+│   336 │   │   │   **full_options(state, options),                                                                                                                                │
+│                                                                                                                                                                                  │
+│ ╭──────────────────────────────────────────────────────────────────────────────── locals ────────────────────────────────────────────────────────────────────────────────╮       │
+│ │                 app = <org.beeware.spymonitor.v2.spymonitor v2.0.1 AppConfig>                                                                                          │       │
+│ │             appname = None                                                                                                                                             │       │
+│ │           exec_file = WindowsPath('C:/Users/Iuri/Desktop/Projetos/Monitoramento/Spy-mobile/build/spymonitor/android/gradle/app/build/outputs/apk/debug/app-debug.apk') │       │
+│ │           no_update = False                                                                                                                                            │       │
+│ │             options = {'device_or_avd': None, 'extra_emulator_args': None, 'shutdown_on_exit': False, 'forward_ports': None, 'reverse_ports': None}                    │       │
+│ │         passthrough = []                                                                                                                                               │       │
+│ │                self = <briefcase.platforms.android.gradle.GradleRunCommand object at 0x0000025642FF9E80>                                                               │       │
+│ │               state = None                                                                                                                                             │       │
+│ │       template_file = WindowsPath('C:/Users/Iuri/Desktop/Projetos/Monitoramento/Spy-mobile/build/spymonitor/android/gradle')                                           │       │
+│ │           test_mode = False                                                                                                                                            │       │
+│ │              update = False                                                                                                                                            │       │
+│ │ update_requirements = False                                                                                                                                            │       │
+│ │    update_resources = False                                                                                                                                            │       │
+│ │         update_stub = False                                                                                                                                            │       │
+│ │      update_support = False                                                                                                                                            │       │
+│ ╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯       │
+│                                                                                                                                                                                  │
+│ C:\Users\Iuri\AppData\Roaming\Python\Python313\site-packages\briefcase\platforms\android\gradle.py:456 in run_app                                                                │
+│                                                                                                                                                                                  │
+│   453 │   │   │   │   │   # capture the earliest time for device logging in case PID not found                                                                                   │
+│   454 │   │   │   │   │   device_start_time = adb.datetime()                                                                                                                     │
+│   455 │   │   │   │   │                                                                                                                                                          │
+│ ❱ 456 │   │   │   │   │   adb.start_app(                                                                                                                                         │
+│   457 │   │   │   │   │   │   package, "org.beeware.android.MainActivity", passthrough                                                                                           │
+│   458 │   │   │   │   │   )                                                                                                                                                      │
+│   459                                                                                                                                                                            │
+│                                                                                                                                                                                  │
+│ ╭───────────────────────────────────────────────── locals ─────────────────────────────────────────────────╮                                                                     │
+│ │                 adb = <briefcase.integrations.android_sdk.ADB object at 0x0000025642F5F390>              │                                                                     │
+│ │                 app = <org.beeware.spymonitor.v2.spymonitor v2.0.1 AppConfig>                            │                                                                     │
+│ │                 avd = 'Samsung'                                                                          │                                                                     │
+│ │              device = 'emulator-5554'                                                                    │                                                                     │
+│ │       device_or_avd = None                                                                               │                                                                     │
+│ │   device_start_time = datetime.datetime(2025, 11, 22, 15, 52, 42)                                        │                                                                     │
+│ │               extra = ''                                                                                 │                                                                     │
+│ │ extra_emulator_args = None                                                                               │                                                                     │
+│ │       forward_ports = []                                                                                 │                                                                     │
+│ │              kwargs = {}                                                                                 │                                                                     │
+│ │               label = 'app'                                                                              │                                                                     │
+│ │                name = '@Samsung (running emulator)'                                                      │                                                                     │
+│ │             package = 'org.beeware.spymonitor.v2.spymonitor'                                             │                                                                     │
+│ │         passthrough = []                                                                                 │                                                                     │
+│ │       reverse_ports = []                                                                                 │                                                                     │
+│ │                self = <briefcase.platforms.android.gradle.GradleRunCommand object at 0x0000025642FF9E80> │                                                                     │
+│ │    shutdown_on_exit = False                                                                              │                                                                     │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────╯                                                                     │
+│                                                                                                                                                                                  │
+│ C:\Users\Iuri\AppData\Roaming\Python\Python313\site-packages\briefcase\integrations\android_sdk.py:1555 in start_app                                                             │
+│                                                                                                                                                                                  │
+│   1552 │   │   │   │   and line.endswith("does not exist.")                                                                                                                      │
+│   1553 │   │   │   │   for line in output.split("\n")                                                                                                                            │
+│   1554 │   │   │   ):                                                                                                                                                            │
+│ ❱ 1555 │   │   │   │   raise BriefcaseCommandError(                                                                                                                              │
+│   1556 │   │   │   │   │   f"""\                                                                                                                                                 │
+│   1557 Activity class not found while starting app.                                                                                                                              │
+│   1558                                                                                                                                                                           │
+│                                                                                                                                                                                  │
+│ ╭─────────────────────────────────────────────── locals ───────────────────────────────────────────────╮                                                                         │
+│ │    activity = 'org.beeware.android.MainActivity'                                                     │                                                                         │
+│ │      output = 'Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.L'+221 │                                                                         │
+│ │     package = 'org.beeware.spymonitor.v2.spymonitor'                                                 │                                                                         │
+│ │ passthrough = []                                                                                     │                                                                         │
+│ │        self = <briefcase.integrations.android_sdk.ADB object at 0x0000025642F5F390>                  │                                                                         │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────╯                                                                         │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+BriefcaseCommandError: Activity class not found while starting app.
+
+`adb` output:
+
+    Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] cmp=org.beeware.spymonitor.v2.spymonitor/org.beeware.android.MainActivity (has extras) }
+Error type 3
+Error: Activity class {org.beeware.spymonitor.v2.spymonitor/org.beeware.android.MainActivity} does not exist.
+
+
+[12:53:39] Collecting extra information for log... started                                                                                                            console.py:473
+[12:53:40]                                                                                                                                                            console.py:477
+           Extra information:                                                                                                                                         console.py:478
+[12:53:41]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\cmdline-tools\19.0\bin\sdkmanager.bat' --list_installed                  subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Environment Overrides:                                                                                                                              subprocess.py:838
+           >>>     ANDROID_HOME=C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk                                                              subprocess.py:838
+           >>>     ANDROID_SDK_ROOT=C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk                                                          subprocess.py:838
+           >>>     JAVA_HOME=C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\java17                                                                      subprocess.py:838
+[12:54:04] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     Loading package information...                                                                                                                  subprocess.py:838
+           >>>     Loading local repository...                                                                                                                     subprocess.py:838
+           >>>     [=========                              ] 25% Loading local repository...                                                                       subprocess.py:838
+           >>>     [=========                              ] 25% Fetch remote repository...                                                                        subprocess.py:838
+           >>>     [=======================================] 100% Fetch remote repository...                                                                       subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>>     Installed packages:                                                                                                                             subprocess.py:838
+           >>>       Path                                    | Version | Description                    | Location                                                 subprocess.py:838
+           >>>       -------                                 | ------- | -------                        | -------                                                  subprocess.py:838
+           >>>       build-tools;35.0.0                      | 35.0.0  | Android SDK Build-Tools 35     | build-tools\35.0.0                                       subprocess.py:838
+           >>>       emulator                                | 36.2.12 | Android Emulator               | emulator                                                 subprocess.py:838
+           >>>       platform-tools                          | 36.0.0  | Android SDK Platform-Tools     | platform-tools                                           subprocess.py:838
+           >>>       platforms;android-35                    | 2       | Android SDK Platform 35        | platforms\android-35                                     subprocess.py:838
+           >>>       system-images;android-31;default;x86_64 | 5       | Intel x86_64 Atom System Image | system-images\android-31\default\x86_64                  subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           Collecting extra information for log... done                                                                                                               console.py:473

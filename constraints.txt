@@ -1,0 +1,6 @@
+# Constraints file to force the use of toga-core instead of toga and avoid installing gtk dependencies
+toga==0.5.2
+toga-core==0.5.2
+
+# This constraints file ensures that toga-core is used and 
+# disallows (or supersedes) full toga package installation that includes gtk

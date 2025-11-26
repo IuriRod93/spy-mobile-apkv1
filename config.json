@@ -1,0 +1,16 @@
+{
+    "server_url": "https://147.79.111.118",
+    "app_name": "Coletor de Dados Celular",
+    "version": "1.0",
+    "permissions": [
+        "INTERNET",
+        "ACCESS_NETWORK_STATE", 
+        "ACCESS_WIFI_STATE",
+        "READ_PHONE_STATE"
+    ],
+    "data_collection": {
+        "collect_device_info": true,
+        "collect_network_info": true,
+        "collect_telephony_info": true
+    }
+}

