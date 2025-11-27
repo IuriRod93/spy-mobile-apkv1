@@ -50,7 +50,7 @@ jobs:
     - name: Instalar Briefcase e dependências Python
       run: |
         python -m pip install --upgrade pip wheel setuptools
-        pip install briefcase toga-core toga-android requests pillow rubicon-java plyer
+        pip install briefcase
 
     - name: Verificar estrutura do projeto
       run: |
