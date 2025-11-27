@@ -12,15 +12,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout código
+      uses: actions/checkout@v4
 
-    - name: Configurar Java JDK
+    - name: Configurar Java JDK 17
       uses: actions/setup-java@v4
       with:
         distribution: 'temurin'
         java-version: '17'
 
-    - name: Configurar Python
+    - name: Configurar Python 3.10
       uses: actions/setup-python@v5
       with:
         python-version: '3.10'
@@ -35,22 +36,37 @@ jobs:
           libssl-dev \
           python3-dev \
           pkg-config \
-          libgirepository1.0-dev \
-          gir1.2-gtk-3.0
+          unzip \
+          wget
 
     - name: Configurar Android SDK
       uses: android-actions/setup-android@v3
 
-    - name: Instalar SDK Components
+    - name: Aceitar licenças e instalar SDK Components
       run: |
+        yes | sdkmanager --licenses || true
         sdkmanager "platforms;android-34" "build-tools;34.0.0" "ndk;25.2.9519653"
 
-    - name: Instalar Briefcase e dependências
+    - name: Instalar Briefcase e dependências Python
       run: |
-        python -m pip install --upgrade pip
-        pip install briefcase toga requests pillow
+        python -m pip install --upgrade pip wheel setuptools
+        pip install briefcase toga toga-android requests pillow rubicon-java plyer
 
-    - name: Criar projeto Briefcase
+    - name: Verificar estrutura do projeto
+      run: |
+        echo "=== Estrutura do diretório ==="
+        ls -la
+        echo ""
+        echo "=== Conteúdo de pyproject.toml ==="
+        cat pyproject.toml
+        echo ""
+        echo "=== Conteúdo de spymonitor ==="
+        ls -la spymonitor/
+        echo ""
+        echo "=== Conteúdo do __main__.py ==="
+        cat spymonitor/__main__.py
+
+    - name: Criar projeto Android com Briefcase
       run: |
         briefcase create android
 
@@ -58,15 +74,19 @@ jobs:
       run: |
         briefcase build android
 
-    - name: Empacotar APK
+    - name: Empacotar APK (ad-hoc signing)
       run: |
         briefcase package android --adhoc
 
-    - name: Listar arquivos gerados
+    - name: Listar arquivos APK gerados
       run: |
-        find . -name "*.apk" -o -name "*.aab" | head -20
+        echo "=== Procurando arquivos APK ==="
+        find . -name "*.apk" -o -name "*.aab" 2>/dev/null | head -20
+        echo ""
+        echo "=== Estrutura do diretório dist ==="
+        ls -la dist/ 2>/dev/null || echo "Pasta dist não encontrada"
 
-    - name: Fazer upload do APK
+    - name: Upload do APK como artefato
       uses: actions/upload-artifact@v4
       with:
         name: spymonitor-apk
@@ -74,4 +94,5 @@ jobs:
           dist/*.apk
           dist/*.aab
           build/**/outputs/**/*.apk
+          build/**/*.apk
         if-no-files-found: warn

