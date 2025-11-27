@@ -15,7 +15,9 @@ formal_name = "Spy Monitor Pro"
 description = "Aplicativo avançado de monitoramento e coleta de dados de dispositivos"
 icon = "logo"
 sources = ["spymonitor"]
-requires = []
+requires = [
+    "toga>=0.4.0",
+]
 url_scheme = "spymonitor"
 
 [tool.briefcase.app.spymonitor.macOS]
