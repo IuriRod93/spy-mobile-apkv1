@@ -66,6 +66,11 @@ jobs:
         echo "=== Conteúdo do __main__.py ==="
         cat spymonitor/__main__.py
 
+    - name: Limpar builds anteriores
+      run: |
+        rm -rf build dist
+        echo "Build limpo com sucesso"
+
     - name: Criar projeto Android com Briefcase
       run: |
         briefcase create android
